@@ -449,7 +449,7 @@ footer{
   .hero h1{
     font-size:38px;
   }
-
+x
   .hero p{
     font-size:17px;
   }
@@ -473,6 +473,81 @@ footer{
     align-items:flex-start;
   }
 }
+  .hero{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:50px;
+}
+
+.hero-content{
+  width:46%;
+}
+
+.hero-slider{
+  width:48%;
+  position:relative;
+  overflow:hidden;
+  border-radius:18px;
+  box-shadow:0 20px 50px rgba(0,0,0,.30);
+}
+
+.hero-slider .slide{
+  display:none;
+}
+
+.hero-slider .slide.active{
+  display:block;
+}
+
+.hero-slider img{
+  width:100%;
+  display:block;
+  border-radius:18px;
+}
+
+.slider-prev,
+.slider-next{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:42px;
+  height:42px;
+  border:0;
+  border-radius:50%;
+  background:rgba(0,0,0,.45);
+  color:white;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.slider-prev{
+  left:12px;
+}
+
+.slider-next{
+  right:12px;
+}
+
+.slider-dots{
+  position:absolute;
+  bottom:14px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
+}
+
+.slider-dots .dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:rgba(255,255,255,.55);
+}
+
+.slider-dots .dot.active{
+  background:white;
+}
 </style>
 </head>
 
@@ -494,7 +569,6 @@ footer{
 <section class="hero" id="accueil">
 
   <div class="hero-content">
-
     <div class="small-title">
       RÉPARATION • OPTIMISATION • CRÉATION GRAPHIQUE
     </div>
@@ -524,7 +598,30 @@ footer{
     </div>
 
   </div>
+<div class="hero-slider">
 
+  <div class="slide active">
+    <img src="banner-mac.png" alt="Réparation MacBook et iMac">
+  </div>
+
+  <div class="slide">
+    <img src="banner-pc.png" alt="Réparation PC Windows">
+  </div>
+
+  <div class="slide">
+    <img src="banner-smart.png" alt="Réparation smartphones et tablettes">
+  </div>
+
+  <button class="slider-prev" aria-label="Image précédente">‹</button>
+  <button class="slider-next" aria-label="Image suivante">›</button>
+
+  <div class="slider-dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
+</div>
 </section>
 
 
@@ -741,6 +838,54 @@ footer{
 <footer>
   © 2026 InfoTeck — Réparation Mac, PC & smartphones
 </footer>
+<script>
+const slides = document.querySelectorAll('.hero-slider .slide');
+const dots = document.querySelectorAll('.slider-dots .dot');
+const prev = document.querySelector('.slider-prev');
+const next = document.querySelector('.slider-next');
 
+let currentSlide = 0;
+let sliderTimer;
+
+function showSlide(index) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+
+  currentSlide = (index + slides.length) % slides.length;
+
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+function startSlider() {
+  sliderTimer = setInterval(() => {
+    showSlide(currentSlide + 1);
+  }, 5000);
+}
+
+function resetSlider() {
+  clearInterval(sliderTimer);
+  startSlider();
+}
+
+next.addEventListener('click', () => {
+  showSlide(currentSlide + 1);
+  resetSlider();
+});
+
+prev.addEventListener('click', () => {
+  showSlide(currentSlide - 1);
+  resetSlider();
+});
+
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    showSlide(index);
+    resetSlider();
+  });
+});
+
+startSlider();
+</script>
 </body>
 </html>
