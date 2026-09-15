@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://weslatitawfikpro-cloud.github.io/infoteck/sitemap.xml
+Sitemap: https://weslatitawfikpro-cloud.github.io/hitek-informatique/sitemap.xml
