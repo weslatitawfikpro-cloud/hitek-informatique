@@ -603,13 +603,12 @@ footer{
 }
 
   .products{
-    grid-template-columns:1fr;
-  }
+  grid-template-columns:repeat(3, 1fr);
+}
 
   .contact-grid{
     grid-template-columns:1fr;
   }
-}
 @media(max-width:900px){
   .services{
     grid-template-columns:1fr 1fr;
@@ -781,22 +780,18 @@ x
 
 .lang-dropdown{
   position:absolute;
-  top:calc(100% + 8px);
+  top:calc(100% + 6px);
   right:0;
-  width:190px;
-
-  display:none;
-
-  background:#ffffff;
-  padding:8px;
+  width:145px;
+  background:#fff;
+  padding:5px;
   border:1px solid #eeeaf5;
-  border-radius:14px;
-  box-shadow:0 15px 40px rgba(38,15,58,.15);
-
+  border-radius:12px;
+  box-shadow:0 12px 30px rgba(38,15,58,.12);
+  display:none;
   z-index:99999;
 }
 
-/* Afficher seulement quand la souris passe sur FR */
 .lang-menu:hover .lang-dropdown{
   display:block;
 }
@@ -804,11 +799,10 @@ x
 nav .lang-dropdown .lang-option{
   display:block;
   margin:0;
-  padding:11px 12px;
-  border-radius:9px;
-
+  padding:8px 10px;
+  border-radius:8px;
   color:#21135f;
-  font-size:14px;
+  font-size:13px;
   text-decoration:none;
   white-space:nowrap;
 }
