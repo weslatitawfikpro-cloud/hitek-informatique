@@ -825,49 +825,56 @@ nav .lang-dropdown .lang-option:hover{
   color:#6428c7;
 }
   /* Boutons Langue + Rendez-vous */
+/* ===== MENU ACTIONS HITEK ===== */
+
 .lang-btn,
 .booking-btn{
-    height:54px;
-    border:none;
-    border-radius:16px;
+    height:44px;
+    border-radius:12px;
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:10px;
-    font-size:16px;
+    gap:8px;
+    font-size:14px;
     font-weight:700;
     cursor:pointer;
     white-space:nowrap;
+    transition:all .2s ease;
 }
 
 /* Langue */
 .lang-btn{
-    min-width:135px;
-    padding:0 20px;
-    background:#f4efff;
+    min-width:95px;
+    padding:0 14px;
+    background:#f5f1ff;
     color:#241c63;
+    border:1px solid #eee7ff;
 }
 
 /* Rendez-vous */
 .booking-btn{
-    min-width:300px;
-    padding:0 24px;
-    background:#f4efff;
-    color:#6428c7;
+    min-width:215px;
+    padding:0 18px;
+    background:#6428c7;
+    color:white;
+    border:1px solid #6428c7;
+    box-shadow:0 6px 16px rgba(100,40,199,.18);
 }
 
 /* Icônes */
 .lang-btn svg,
 .booking-btn svg{
-    width:24px;
-    height:24px;
-    flex-shrink:0;
+    width:18px;
+    height:18px;
 }
 
-/* Petite animation */
-.lang-btn:hover,
+/* Survol */
+.lang-btn:hover{
+    background:#eee7ff;
+}
+
 .booking-btn:hover{
-    background:#eee5ff;
+    background:#5420ad;
     transform:translateY(-1px);
 }
 </style>
