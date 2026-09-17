@@ -427,11 +427,166 @@ footer{
   transform:scale(1.025);
   box-shadow:0 10px 25px rgba(38,15,58,.15);
 }
-@media(max-width:1400px){
-  nav a:not(.rdv){
-    display:none;
-  }
+/* ===== HITEK - LANGUE & RENDEZ-VOUS ===== */
 
+.lang-menu,
+.booking-menu{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+}
+
+/* ----- LANGUE ----- */
+
+.lang-btn{
+  border:none;
+  background:#f4f0ff;
+  color:#21135f;
+  padding:13px 18px;
+  border-radius:14px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* ----- BOUTON RENDEZ-VOUS ----- */
+
+.booking-btn{
+  border:none;
+  background:linear-gradient(135deg,#4d19c8,#702cff);
+  color:white;
+  padding:15px 20px;
+  border-radius:14px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  box-shadow:0 8px 20px rgba(100,40,199,.22);
+}
+
+.calendar-icon{
+  width:24px;
+  height:24px;
+}
+
+.booking-chevron{
+  margin-left:6px;
+  font-size:20px;
+}
+
+/* ----- MENU DÉROULANT ----- */
+
+.booking-dropdown{
+  position:absolute;
+  right:0;
+  top:calc(100% + 10px);
+  width:370px;
+
+  background:white;
+  border:1px solid #eeeaf5;
+  border-radius:18px;
+  padding:10px 18px;
+
+  box-shadow:0 20px 45px rgba(38,15,58,.15);
+
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(-8px);
+  transition:.22s ease;
+
+  z-index:9999;
+}
+
+/* Affichage au survol */
+.booking-menu:hover .booking-dropdown{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+}
+
+/* ----- OPTIONS ----- */
+
+.booking-option{
+  margin:0 !important;
+  padding:17px 4px;
+
+  display:flex;
+  align-items:center;
+  gap:15px;
+
+  text-decoration:none;
+  border-bottom:1px solid #eeeaf5;
+  color:#21135f;
+
+  transition:.2s ease;
+}
+
+.booking-option:last-child{
+  border-bottom:none;
+}
+
+.booking-option:hover{
+  transform:translateX(3px);
+}
+
+/* Carré violet clair des icônes */
+
+.booking-icon{
+  width:52px;
+  height:52px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#f3efff;
+  border-radius:13px;
+
+  color:#251272;
+  flex-shrink:0;
+}
+
+.booking-icon svg{
+  width:29px;
+  height:29px;
+}
+
+/* Texte */
+
+.booking-text{
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
+.booking-text strong{
+  font-size:16px;
+  color:#21135f;
+  margin-bottom:4px;
+}
+
+.booking-text small{
+  font-size:13px;
+  font-weight:400;
+  color:#77708f;
+}
+
+.booking-arrow{
+  font-size:29px;
+  color:#716794;
+}
+
+/* Pas de ligne violette sous les options */
+
+.booking-option::after{
+  display:none !important;
+}
+  
   .hero{
     padding-top:70px;
   }
