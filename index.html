@@ -87,10 +87,36 @@ header{
 }
 
 nav a{
-  text-decoration:none;
-  color:#241c2c;
-  margin-left:25px;
-  font-size:15px;
+    text-decoration:none;
+    color:#241c2c;
+    margin-left:25px;
+    font-size:15px;
+    position:relative;
+    padding-bottom:7px;
+    transition:color .25s ease;
+}
+
+/* Ligne violette sous les liens du menu */
+nav a:not(.rdv)::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:0;
+    width:0;
+    height:2px;
+    background:#6428c7;
+    border-radius:10px;
+    transform:translateX(-50%);
+    transition:width .25s ease;
+}
+
+/* Apparition au passage de la souris */
+nav a:not(.rdv):hover{
+    color:#6428c7;
+}
+
+nav a:not(.rdv):hover::after{
+    width:100%;
 }
 
 nav .rdv{
@@ -605,7 +631,6 @@ x
   <nav>
     <a href="#accueil">Accueil</a>
     <a href="#services">Services</a>
-    <a href="#appareils">Appareils usagés</a>
     <a href="#contact">Contact</a>
     <a class="rdv" href="#choix-rendezvous">📅 Prendre rendez-vous</a>
   </nav>
