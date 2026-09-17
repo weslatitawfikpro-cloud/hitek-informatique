@@ -817,6 +817,52 @@ nav .lang-dropdown .lang-option:hover{
   background:#f4f0ff;
   color:#6428c7;
 }
+  /* Boutons Langue + Rendez-vous */
+.lang-btn,
+.booking-btn{
+    height:54px;
+    border:none;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+/* Langue */
+.lang-btn{
+    min-width:135px;
+    padding:0 20px;
+    background:#f4efff;
+    color:#241c63;
+}
+
+/* Rendez-vous */
+.booking-btn{
+    min-width:300px;
+    padding:0 24px;
+    background:#f4efff;
+    color:#6428c7;
+}
+
+/* Icônes */
+.lang-btn svg,
+.booking-btn svg{
+    width:24px;
+    height:24px;
+    flex-shrink:0;
+}
+
+/* Petite animation */
+.lang-btn:hover,
+.booking-btn:hover{
+    background:#eee5ff;
+    transform:translateY(-1px);
+}
 </style>
 </head>
 
