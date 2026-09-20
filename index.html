@@ -389,22 +389,25 @@ footer{
   margin-bottom: 16px;
 }
 
-..service-visual > .service-image {
+.service-visual > img.service-image {
   position: absolute;
-  width: 78%;
+  display: block;
+  width: 85%;
   height: auto;
   max-width: none;
   max-height: none;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
-  object-fit: contain;
+  right: auto;
+  bottom: auto;
   margin: 0;
+  object-fit: contain;
   border-radius: 0;
   z-index: 1;
+  transform: translate(-50%, -50%);
 }
 
-.card:hover .service-visual > .service-image {
+.card:hover .service-visual > img.service-image {
   transform: translate(-50%, -50%);
   box-shadow: none;
 }
