@@ -377,7 +377,90 @@ footer{
   display:block;
   transition:transform .35s ease, box-shadow .35s ease;
 }
+/* ===== HITEK : BULLES ANIMÉES ===== */
 
+.service-visual {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #faf7ff;
+}
+
+.service-visual .service-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin-bottom: 0;
+}
+
+.service-bubble {
+    position: absolute;
+    z-index: 2;
+    padding: 8px 12px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, .94);
+    border: 1px solid #e8dcff;
+    box-shadow: 0 6px 18px rgba(80, 35, 130, .12);
+    color: #51259a;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+    animation: bubbleFloat 4s ease-in-out infinite;
+}
+
+.bubble-1 {
+    top: 12%;
+    left: 4%;
+}
+
+.bubble-2 {
+    top: 12%;
+    right: 4%;
+    animation-delay: -1s;
+}
+
+.bubble-3 {
+    bottom: 12%;
+    left: 4%;
+    animation-delay: -2s;
+}
+
+.bubble-4 {
+    bottom: 12%;
+    right: 4%;
+    animation-delay: -3s;
+}
+
+@keyframes bubbleFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@media (max-width: 600px) {
+    .service-visual {
+        height: 200px;
+    }
+
+    .service-bubble {
+        font-size: 10px;
+        padding: 6px 8px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .service-bubble {
+        animation: none;
+    }
+}
+  
 .service-card-horizontal{
   display:flex;
   align-items:center;
@@ -1096,7 +1179,18 @@ nav .lang-dropdown .lang-option:hover{
   <div class="services">
 
     <div class="card">
-      <img src="HiTek Informatique_reparation.png" alt="Réparation et diagnostic informatique" class="service-image">
+      <div class="service-visual">
+    <img
+        src="HiTek Informatique_reparation.png"
+        alt="Réparation et diagnostic informatique"
+        class="service-image"
+    >
+
+    <span class="service-bubble bubble-1">🔍 Diagnostic</span>
+    <span class="service-bubble bubble-2">🔧 Réparation</span>
+    <span class="service-bubble bubble-3">⚡ Optimisation</span>
+    <span class="service-bubble bubble-4">💻 Installation</span>
+</div>
       <h3>Réparation & diagnostic</h3>
       <p>Mac, PC, smartphones, dépannage, diagnostic et optimisation.</p>
 
