@@ -379,20 +379,23 @@ footer{
 }
 /* ===== HITEK : BULLES ANIMÉES ===== */
 
+/* ===== HITEK : VISUEL RÉPARATION ===== */
+
 .service-visual {
   position: relative;
   width: 100%;
-  height: 330px;             /* cadre moins haut */
+  height: 330px;
   overflow: hidden;
   border-radius: 14px;
   background: #faf7ff;
   margin-bottom: 16px;
 }
 
+/* MacBook au centre, plus grand */
 .service-visual > img.service-image {
   position: absolute;
   display: block;
-  width: 85%;
+  width: 64%;
   height: auto;
   max-width: none;
   max-height: none;
@@ -407,14 +410,17 @@ footer{
   transform: translate(-50%, -50%);
 }
 
+/* Ne pas déplacer le MacBook au survol */
 .card:hover .service-visual > img.service-image {
   transform: translate(-50%, -50%);
   box-shadow: none;
 }
+
+/* Bulles animées */
 .service-bubble {
   position: absolute;
   display: block;
-  width: 22%;
+  width: 19%;
   z-index: 2;
   animation: bulle-flottante 4s ease-in-out infinite;
 }
@@ -425,36 +431,38 @@ footer{
   height: auto;
 }
 
+/* Trois bulles à gauche */
 .bubble-1 {
-  top: 5%;
-  left: 10%;
+  top: 6%;
+  left: 16%;
 }
 
 .bubble-2 {
   top: 38%;
-  left: 10%;
+  left: 12%;
   animation-delay: -1s;
 }
 
 .bubble-3 {
-  top: 68%;
+  top: 70%;
   bottom: auto;
-  left: 10%;
+  left: 16%;
   animation-delay: -2s;
 }
 
+/* Deux bulles à droite */
 .bubble-4 {
-  top: 14%;
-  right: 10%;
+  top: 20%;
+  right: 13%;
   animation-delay: -1.5s;
 }
 
 .bubble-5 {
-  bottom: 12%;
-  right: 10%;
+  top: 58%;
+  bottom: auto;
+  right: 13%;
   animation-delay: -2.5s;
 }
-
 @keyframes bulle-flottante {
   0%, 100% {
     transform: translateY(0);
