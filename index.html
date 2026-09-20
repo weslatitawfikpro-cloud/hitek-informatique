@@ -396,42 +396,48 @@ footer{
     margin-bottom: 0;
 }
 
+.service-visual {
+  position: relative;
+  width: 100%;
+  height: 430px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #faf7ff;
+}
+
+.service-visual > .service-image {
+  position: absolute;
+  width: 72%;
+  height: 78%;
+  left: 14%;
+  top: 11%;
+  object-fit: contain;
+  margin: 0;
+}
+
 .service-bubble {
-    position: absolute;
-    z-index: 2;
-    padding: 8px 12px;
-    border-radius: 30px;
-    background: rgba(255, 255, 255, .94);
-    border: 1px solid #e8dcff;
-    box-shadow: 0 6px 18px rgba(80, 35, 130, .12);
-    color: #51259a;
-    font-size: 12px;
-    font-weight: 700;
-    white-space: nowrap;
-    animation: bubbleFloat 4s ease-in-out infinite;
+  position: absolute;
+  display: block;
+  width: 25%;
+  z-index: 2;
+  animation: bulle-flottante 4s ease-in-out infinite;
 }
 
-.bubble-1 {
-    top: 12%;
-    left: 4%;
+.service-bubble img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-.bubble-2 {
-    top: 12%;
-    right: 4%;
-    animation-delay: -1s;
-}
+.bubble-1 { top: 3%; left: 2%; }
+.bubble-2 { top: 36%; left: 1%; animation-delay: -1s; }
+.bubble-3 { bottom: 3%; left: 3%; animation-delay: -2s; }
+.bubble-4 { top: 12%; right: 2%; animation-delay: -1.5s; }
+.bubble-5 { bottom: 10%; right: 2%; animation-delay: -2.5s; }
 
-.bubble-3 {
-    bottom: 12%;
-    left: 4%;
-    animation-delay: -2s;
-}
-
-.bubble-4 {
-    bottom: 12%;
-    right: 4%;
-    animation-delay: -3s;
+@keyframes bulle-flottante {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
 }
 
 @keyframes bubbleFloat {
