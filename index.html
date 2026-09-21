@@ -453,7 +453,7 @@ footer{
 /* Deux bulles à droite */
 .bubble-4 {
   top: 20%;
-  right: 13%;
+  right: 18%;
   animation-delay: -1.5s;
 }
 
@@ -1012,6 +1012,55 @@ nav .lang-dropdown .lang-option:hover{
   padding: 14px;
   box-sizing: border-box;
 }
+  .stock-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.stock-badge {
+  display: inline-block;
+  padding: 5px 11px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.stock-badge.available {
+  background: #dcfce7;
+  color: #166534;
+}
+  /* Titre et indicateur de stock */
+.stock-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.stock-heading h2 {
+  margin: 0;
+}
+
+.stock-badge {
+  display: inline-block;
+  padding: 6px 11px;
+  border-radius: 20px;
+  background: #fce8e8;
+  color: #b42318;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Quand au moins un appareil est disponible */
+.stock-badge.available {
+  background: #e6f7ed;
+  color: #16803c;
+}
 </style>
 </head>
 
@@ -1375,9 +1424,15 @@ nav .lang-dropdown .lang-option:hover{
 
 <section class="used" id="appareils">
 
+  <div class="stock-heading">
   <div class="section-label">Appareils usagés</div>
+  <span id="stock-badge" class="stock-badge">Stock épuisé</span>
+</div>
 
+  <div class="stock-heading">
   <h2>Mac, PC et téléphones vérifiés</h2>
+  <span id="stock-badge" class="stock-badge">Stock épuisé</span>
+</div>
 
   <p class="intro">
     Appareils testés et prêts à l'emploi. Les disponibilités changent régulièrement.
@@ -1508,6 +1563,28 @@ dots.forEach((dot, index) => {
 });
 
 startSlider();
+  <script>
+  // Ajoute ici chaque appareil réellement disponible à la vente.
+const appareilsEnVente = [
+  { nom: "MacBook Pro 2020", disponible: true }
+];
+
+  const nombreDisponible = appareilsEnVente.filter(
+    appareil => appareil.disponible
+  ).length;
+
+  const badgeStock = document.getElementById("stock-badge");
+
+  if (badgeStock) {
+    if (nombreDisponible > 0) {
+      badgeStock.textContent = `En stock (${nombreDisponible})`;
+      badgeStock.classList.add("available");
+    } else {
+      badgeStock.textContent = "Stock épuisé";
+      badgeStock.classList.remove("available");
+    }
+  }
+
 </script>
 </body>
 </html>
