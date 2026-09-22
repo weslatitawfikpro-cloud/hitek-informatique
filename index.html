@@ -1636,30 +1636,102 @@ dots.forEach((dot, index) => {
 
 startSlider();
  
-  // Ajoute ici chaque appareil réellement disponible à la vente.
+// Inventaire unique du catalogue InfoTeck
 const appareilsEnVente = [
-  { nom: "MacBook Pro 2015", disponible: true },
-  { nom: "Clavier sans fil Apple", disponible: true },
-  { nom: "Souris sans fil Apple", disponible: true },
-  { nom: "Chargeur USB-C MacBook Air", disponible: true },
-  { nom: "Chargeur iPad", disponible: true }
+  {
+    nom: "MacBook Pro 2015",
+    categorie: "macbook",
+    image: "",
+    quantite: 1,
+    description: "MacBook Pro usagé. Détails sur demande."
+  },
+  {
+    nom: "Magic Keyboard",
+    categorie: "accessoires",
+    image: "",
+    quantite: 1,
+    description: "Clavier sans fil Apple."
+  },
+  {
+    nom: "Magic Mouse",
+    categorie: "accessoires",
+    image: "",
+    quantite: 1,
+    description: "Souris sans fil Apple."
+  },
+  {
+    nom: "Chargeur USB-C pour MacBook Air",
+    categorie: "accessoires",
+    image: "",
+    quantite: 5,
+    description: "Chargeur USB-C. Compatibilité à confirmer selon l'appareil."
+  },
+  {
+    nom: "Chargeur pour iPad",
+    categorie: "accessoires",
+    image: "",
+    quantite: 2,
+    description: "Chargeur pour iPad. Modèle à confirmer."
+  }
 ];
 
-  const nombreDisponible = appareilsEnVente.filter(
-    appareil => appareil.disponible
-  ).length;
+// Afficher les articles dans leur catégorie
+const destinationsCatalogue = {
+  macbook: "articles-macbook",
+  pc: "articles-pc",
+  mobile: "articles-mobile",
+  accessoires: "articles-accessoires"
+};
 
-  const badgeStock = document.getElementById("stock-badge");
+appareilsEnVente.forEach(article => {
+  const destination = document.getElementById(
+    destinationsCatalogue[article.categorie]
+  );
 
-  if (badgeStock) {
-    if (nombreDisponible > 0) {
-      badgeStock.textContent = `En stock (${nombreDisponible})`;
-      badgeStock.classList.add("available");
-    } else {
-      badgeStock.textContent = "Stock épuisé";
-      badgeStock.classList.remove("available");
-    }
+  if (!destination) return;
+
+  const disponible = article.quantite > 0;
+  const carte = document.createElement("div");
+  carte.className = "product catalogue-article";
+
+  if (!disponible) {
+    carte.classList.add("epuise");
   }
+
+  const photo = article.image
+    ? `<img src="${article.image}" alt="${article.nom}" class="product-image">`
+    : `<div class="product-image photo-attente">Photo à venir</div>`;
+
+  carte.innerHTML = `
+    ${photo}
+    <h3>${article.nom}</h3>
+    <p>${article.description}</p>
+    <div class="price">
+      ${disponible
+        ? `Disponible — quantité : ${article.quantite}`
+        : "Stock épuisé"}
+    </div>
+  `;
+
+  destination.appendChild(carte);
+});
+
+// Mettre à jour le badge général à partir du même inventaire
+const nombreDisponible = appareilsEnVente.filter(
+  article => article.quantite > 0
+).length;
+
+const badgeStock = document.getElementById("stock-badge");
+
+if (badgeStock) {
+  if (nombreDisponible > 0) {
+    badgeStock.textContent = `En stock (${nombreDisponible})`;
+    badgeStock.classList.add("available");
+  } else {
+    badgeStock.textContent = "Stock épuisé";
+    badgeStock.classList.remove("available");
+  }
+}
 
 </script>
 </body>
