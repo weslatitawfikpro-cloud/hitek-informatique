@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalogue | InfoTeck Informatique</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #faf9ff;
+      color: #252333;
+    }
+
+    header {
+      background: white;
+      padding: 22px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid #e9e5f2;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #6d28d9;
+    }
+
+    .retour {
+      color: #6d28d9;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 1250px;
+      margin: auto;
+      padding: 45px 24px;
+    }
+
+    h1 { font-size: 36px; }
+
+    .intro {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .categories {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+    }
+
+    .categories a {
+      padding: 12px 18px;
+      border-radius: 25px;
+      background: white;
+      border: 1px solid #e5dff2;
+      color: #6d28d9;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .categories a:hover {
+      background: #6d28d9;
+      color: white;
+    }
+
+    .catalogue-section {
+      margin: 55px 0;
+      scroll-margin-top: 25px;
+    }
+
+    .catalogue-section h2 {
+      margin-bottom: 22px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .product {
+      background: white;
+      border: 1px solid #e9e5f2;
+      border-radius: 16px;
+      padding: 22px;
+    }
+
+    .product img {
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+    }
+
+    .product h3 {
+      margin-bottom: 8px;
+    }
+
+    .product p {
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .photo-attente {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f5f5f7;
+      color: #777;
+      border-radius: 12px;
+    }
+
+    .disponibilite {
+      font-weight: bold;
+      color: #16803c;
+      margin: 15px 0;
+    }
+
+    .epuise img {
+      filter: grayscale(100%);
+      opacity: 0.45;
+    }
+
+    .epuise .disponibilite {
+      color: #b42318;
+    }
+
+    .contact {
+      display: inline-block;
+      background: #6d28d9;
+      color: white;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 9px;
+      font-weight: bold;
+    }
+
+    .epuise .contact {
+      display: none;
+    }
+
+    .vide {
+      color: #777;
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      header { flex-wrap: wrap; }
+      h1 { font-size: 28px; }
+      .products { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">InfoTeck</div>
+  <a class="retour" href="index.html#appareils">← Retour à l’accueil</a>
+</header>
+
+<main>
+  <h1>Catalogue InfoTeck</h1>
+  <p class="intro">
+    Découvrez nos appareils et accessoires disponibles.
+    Contactez-nous pour obtenir plus de détails ou réserver un article.
+  </p>
+
+  <nav class="categories" aria-label="Catégories du catalogue">
+    <a href="#catalogue-macbook">MacBook</a>
+    <a href="#catalogue-pc">PC portables</a>
+    <a href="#catalogue-mobile">Smartphones &amp; tablettes</a>
+    <a href="#catalogue-accessoires">Accessoires</a>
+  </nav>
+
+  <section id="catalogue-macbook" class="catalogue-section">
+    <h2>MacBook</h2>
+    <div class="products" id="articles-macbook"></div>
+  </section>
+
+  <section id="catalogue-pc" class="catalogue-section">
+    <h2>PC portables</h2>
+    <div class="products" id="articles-pc"></div>
+  </section>
+
+  <section id="catalogue-mobile" class="catalogue-section">
+    <h2>Smartphones &amp; tablettes</h2>
+    <div class="products" id="articles-mobile"></div>
+  </section>
+
+  <section id="catalogue-accessoires" class="catalogue-section">
+    <h2>Accessoires</h2>
+    <div class="products" id="articles-accessoires"></div>
+  </section>
+</main>
+
+<script>
+  // Inventaire du catalogue
+  const appareilsEnVente = [
+    {
+      nom: "MacBook Pro",
+      categorie: "macbook",
+      image: "macbook pro 2013.png",
+      quantite: 1,
+      description: "MacBook Pro usagé. Caractéristiques sur demande."
+    },
+    {
+      nom: "Magic Keyboard",
+      categorie: "accessoires",
+      image: "clavier.png",
+      quantite: 1,
+      description: "Clavier sans fil Apple."
+    },
+    {
+      nom: "Magic Mouse",
+      categorie: "accessoires",
+      image: "souris.png",
+      quantite: 1,
+      description: "Souris sans fil Apple."
+    },
+    {
+      nom: "Chargeur USB-C pour MacBook",
+      categorie: "accessoires",
+      image: "chargeur macbook pro.png",
+      quantite: 5,
+      description: "Chargeur USB-C. Compatibilité selon le modèle."
+    },
+    {
+      nom: "Chargeur pour iPad",
+      categorie: "accessoires",
+      image: "chargeur apple.png",
+      quantite: 2,
+      description: "Chargeur pour iPad. Modèle à confirmer."
+    },
+    {
+      nom: "Mac mini",
+      categorie: "accessoires",
+      image: "macmini.png",
+      quantite: 1,
+      description: "Mac mini usagé. Caractéristiques sur demande."
+    },
+    {
+      nom: "Deux écrans ViewSonic avec support",
+      categorie: "accessoires",
+      image: "ecran support.png",
+      quantite: 1,
+      description: "Ensemble de deux écrans avec support."
+    }
+  ];
+
+  const destinations = {
+    macbook: "articles-macbook",
+    pc: "articles-pc",
+    mobile: "articles-mobile",
+    accessoires: "articles-accessoires"
+  };
+
+  for (const [categorie, id] of Object.entries(destinations)) {
+    const destination = document.getElementById(id);
+    const articles = appareilsEnVente.filter(
+      article => article.categorie === categorie
+    );
+
+    if (articles.length === 0) {
+      destination.innerHTML =
+        '<p class="vide">Aucun article pour le moment.</p>';
+      continue;
+    }
+
+    articles.forEach(article => {
+      const disponible = article.quantite > 0;
+      const carte = document.createElement("article");
+
+      carte.className = disponible ? "product" : "product epuise";
+
+      const photo = article.image
+        ? `<img src="${encodeURI(article.image)}" alt="${article.nom}">`
+        : '<div class="photo-attente">Photo à venir</div>';
+
+      const sujet = encodeURIComponent(
+        "Demande d'information - " + article.nom
+      );
+
+      carte.innerHTML = `
+        ${photo}
+        <h3>${article.nom}</h3>
+        <p>${article.description}</p>
+        <div class="disponibilite">
+          ${disponible
+            ? `Disponible — quantité : ${article.quantite}`
+            : "Stock épuisé"}
+        </div>
+        <a class="contact"
+           href="mailto:hitek.informatique26@gmail.com?subject=${sujet}">
+          Nous contacter
+        </a>
+      `;
+
+      destination.appendChild(carte);
+    });
+  }
+</script>
+
+</body>
+</html>
