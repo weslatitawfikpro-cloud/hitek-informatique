@@ -1120,6 +1120,38 @@ nav .lang-dropdown .lang-option:hover{
 .catalogue-article.epuise .price {
   color: #b42318;
 }
+  /* Quatre catégories alignées sur ordinateur */
+.used#appareils .products {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.used#appareils .catalogue-category {
+  min-width: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.used#appareils .catalogue-category .product-image {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+}
+
+/* Tablette */
+@media (max-width: 1000px) {
+  .used#appareils .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Téléphone */
+@media (max-width: 600px) {
+  .used#appareils .products {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 </head>
 
