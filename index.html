@@ -1085,6 +1085,41 @@ nav .lang-dropdown .lang-option:hover{
   justify-content: center;
   font-size: 72px;
 }
+  /* Fiches des articles du catalogue */
+.catalogue-section {
+  margin-top: 40px;
+  scroll-margin-top: 110px;
+}
+
+.catalogue-section > h3 {
+  margin-bottom: 18px;
+}
+
+.catalogue-article .product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+
+.photo-attente {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  background: #f5f5f7;
+  color: #777;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.catalogue-article.epuise .product-image {
+  filter: grayscale(100%);
+  opacity: 0.45;
+}
+
+.catalogue-article.epuise .price {
+  color: #b42318;
+}
 </style>
 </head>
 
