@@ -1155,23 +1155,53 @@ nav .lang-dropdown .lang-option:hover{
   /* ===== AFFICHAGE ORDINATEUR ===== */
 
 @media (min-width: 769px) {
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 40px;
+  }
+
   .mobile-menu-btn {
     display: none;
   }
 
   #mobile-nav {
     display: flex !important;
+    flex-direction: row !important;
     align-items: center;
-    justify-content: flex-end;
-    gap: 22px;
-    width: auto;
-    margin-left: auto;
+    justify-content: flex-start;
+    gap: 28px;
+    width: auto !important;
+    padding: 0 !important;
   }
-}
-  /* ===== MENU MOBILE ===== */
 
-.mobile-menu-btn {
-  display: none;
+  #mobile-nav > a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  #mobile-nav > a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 0;
+    height: 2px;
+    background: #6d28d9;
+    transition: width 0.25s ease;
+  }
+
+  #mobile-nav > a:hover::after {
+    width: 100%;
+  }
+
+  #mobile-nav .lang-menu {
+    width: auto;
+  }
 }
 
 @media (max-width: 768px) {
