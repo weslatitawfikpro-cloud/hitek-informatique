@@ -1152,6 +1152,34 @@ nav .lang-dropdown .lang-option:hover{
     grid-template-columns: 1fr;
   }
 }
+  /* ===== MENU MOBILE ===== */
+
+.mobile-menu-btn {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block;
+    background: transparent;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 8px;
+  }
+  #mobile-nav {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 0;
+}
+
+#mobile-nav.active {
+  display: flex;
+}
+}
 </style>
 </head>
 
@@ -1161,8 +1189,10 @@ nav .lang-dropdown .lang-option:hover{
   <div class="logo">
   <img src="hit.png" alt="HiTek Informatique">
 </div>
-
-  <nav>
+<button class="mobile-menu-btn" type="button" aria-label="Ouvrir le menu">
+  ☰
+</button>
+ <nav id="mobile-nav">
     <a href="#accueil">Accueil</a>
     <a href="#services">Services</a>
     <a href="#contact">Contact</a>
@@ -1766,6 +1796,22 @@ if (badgeStock) {
   }
 }
 
+</script>
+  <script>
+  const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+  const mobileNav = document.getElementById("mobile-nav");
+
+  if (mobileMenuBtn && mobileNav) {
+    mobileMenuBtn.addEventListener("click", function () {
+      mobileNav.classList.toggle("active");
+
+      if (mobileNav.classList.contains("active")) {
+        mobileMenuBtn.textContent = "✕";
+      } else {
+        mobileMenuBtn.textContent = "☰";
+      }
+    });
+  }
 </script>
 </body>
 </html>
