@@ -1305,9 +1305,9 @@ nav .lang-dropdown .lang-option:hover{
   ☰
 </button>
  <nav id="mobile-nav">
-    <a href="#accueil">Accueil</a>
-    <a href="#services">Services</a>
-    <a href="#contact">Contact</a>
+   <a href="#accueil" data-i18n="nav-home">Accueil</a>
+<a href="#services" data-i18n="nav-services">Services</a>
+<a href="#contact" data-i18n="nav-contact">Contact</a>
 
     <!-- ===== ACTIONS HITEK ===== -->
 
@@ -1342,7 +1342,7 @@ nav .lang-dropdown .lang-option:hover{
     </svg>
 
     <span>Prendre rendez-vous</span>
-    <span class="booking-chevron">⌄</span>
+    <span data-i18n="book-appointment">Prendre rendez-vous</span>
 
   </button>
 
@@ -1443,33 +1443,33 @@ nav .lang-dropdown .lang-option:hover{
 <section class="hero" id="accueil">
 
   <div class="hero-content">
-    <div class="small-title">
-      RÉPARATION • OPTIMISATION • CRÉATION GRAPHIQUE
-    </div>
+    <div class="small-title" data-i18n="hero-small">
+  RÉPARATION • OPTIMISATION • CRÉATION GRAPHIQUE
+</div>
 
-    <h1>Solutions informatiques<br>& création graphique.</h1>
+<h1 data-i18n="hero-title">Solutions informatiques<br>& création graphique.</h1>
 
-    <p>
+<p data-i18n="hero-description">
   Réparation Mac, PC et smartphones, optimisation informatique
   et création graphique : logos, cartes de visite, flyers et affiches.
   Pour particuliers et PME à Terrebonne et environs.
 </p>
 
-    <div class="buttons">
-      <a class="button primary" href="#choix-rendezvous">
-        📅 Prendre rendez-vous
-      </a>
+<div class="buttons">
+  <a class="button primary" href="#choix-rendezvous" data-i18n="hero-book">
+    📅 Prendre rendez-vous
+  </a>
 
-      <a class="button secondary" href="#services">
-        Voir les services
-      </a>
-    </div>
+  <a class="button secondary" href="#services" data-i18n="hero-services">
+    Voir les services
+  </a>
+</div>
 
-    <div class="trust">
-      <div>✓ Réparation & diagnostic</div>
-<div>✓ Création graphique</div>
-<div>✓ Particuliers & PME</div>
-    </div>
+<div class="trust">
+  <div data-i18n="trust-repair">✓ Réparation & diagnostic</div>
+  <div data-i18n="trust-design">✓ Création graphique</div>
+  <div data-i18n="trust-clients">✓ Particuliers & PME</div>
+</div>
 
   </div>
 <div class="hero-slider">
@@ -1922,6 +1922,71 @@ if (badgeStock) {
       }
     });
   }
+</script>
+  <script>
+const translations = {
+  fr: {
+    "nav-home": "Accueil",
+    "nav-services": "Services",
+    "nav-contact": "Contact",
+    "book-appointment": "Prendre rendez-vous",
+
+    "hero-small": "RÉPARATION • OPTIMISATION • CRÉATION GRAPHIQUE",
+    "hero-title": "Solutions informatiques<br>& création graphique.",
+    "hero-description": "Réparation Mac, PC et smartphones, optimisation informatique et création graphique : logos, cartes de visite, flyers et affiches. Pour particuliers et PME à Terrebonne et environs.",
+    "hero-book": "📅 Prendre rendez-vous",
+    "hero-services": "Voir les services",
+
+    "trust-repair": "✓ Réparation & diagnostic",
+    "trust-design": "✓ Création graphique",
+    "trust-clients": "✓ Particuliers & PME"
+  },
+
+  en: {
+    "nav-home": "Home",
+    "nav-services": "Services",
+    "nav-contact": "Contact",
+    "book-appointment": "Book an appointment",
+
+    "hero-small": "REPAIR • OPTIMIZATION • GRAPHIC DESIGN",
+    "hero-title": "IT Solutions<br>& Graphic Design.",
+    "hero-description": "Mac, PC and smartphone repair, IT optimization and graphic design: logos, business cards, flyers and posters. For individuals and small businesses in Terrebonne and surrounding areas.",
+    "hero-book": "📅 Book an appointment",
+    "hero-services": "View services",
+
+    "trust-repair": "✓ Repair & diagnostics",
+    "trust-design": "✓ Graphic design",
+    "trust-clients": "✓ Individuals & small businesses"
+  }
+};
+
+function changeLanguage(lang) {
+  document.querySelectorAll("[data-i18n]").forEach(element => {
+    const key = element.getAttribute("data-i18n");
+
+    if (translations[lang] && translations[lang][key]) {
+      element.innerHTML = translations[lang][key];
+    }
+  });
+
+  const currentLanguage = document.querySelector(".lang-btn span:nth-child(2)");
+  if (currentLanguage) {
+    currentLanguage.textContent = lang.toUpperCase();
+  }
+
+  document.documentElement.lang = lang;
+  localStorage.setItem("hitek-language", lang);
+}
+
+document.querySelectorAll(".lang-option").forEach(option => {
+  option.addEventListener("click", function(event) {
+    event.preventDefault();
+    changeLanguage(this.dataset.lang);
+  });
+});
+
+const savedLanguage = localStorage.getItem("hitek-language") || "fr";
+changeLanguage(savedLanguage);
 </script>
 </body>
 </html>
