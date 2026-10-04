@@ -2101,25 +2101,6 @@ function changeLanguage(lang) {
   if (currentLanguage) {
     currentLanguage.textContent = lang.toUpperCase();
   }
-const badgeStock = document.getElementById("stock-badge");
-
-if (badgeStock) {
-  if (nombreDisponible > 0) {
-    badgeStock.textContent =
-      lang === "en"
-        ? `In stock (${nombreDisponible})`
-        : `En stock (${nombreDisponible})`;
-
-    badgeStock.classList.add("available");
-  } else {
-    badgeStock.textContent =
-      lang === "en"
-        ? "Out of stock"
-        : "Stock épuisé";
-
-    badgeStock.classList.remove("available");
-  }
-}
   document.documentElement.lang = lang;
   localStorage.setItem("hitek-language", lang);
 }
