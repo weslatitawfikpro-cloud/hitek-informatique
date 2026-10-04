@@ -1934,6 +1934,31 @@ if (badgeStock) {
   }
 </script>
   <script>
+    <script>
+const langMenu = document.querySelector(".lang-menu");
+const langBtn = document.querySelector(".lang-btn");
+
+if (langMenu && langBtn) {
+
+  langBtn.addEventListener("click", function(event) {
+    event.stopPropagation();
+    langMenu.classList.toggle("active");
+  });
+
+  document.querySelectorAll(".lang-option").forEach(option => {
+    option.addEventListener("click", function() {
+      langMenu.classList.remove("active");
+    });
+  });
+
+  document.addEventListener("click", function(event) {
+    if (!langMenu.contains(event.target)) {
+      langMenu.classList.remove("active");
+    }
+  });
+
+}
+</script>
 const translations = {
   fr: {
     "nav-home": "Accueil",
