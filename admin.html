@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Administration | HiTek Informatique</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f5fa;
+      color: #241b2f;
+    }
+
+    .admin-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .admin-header {
+      margin-bottom: 30px;
+    }
+
+    .admin-header h1 {
+      margin-bottom: 8px;
+    }
+
+    .admin-card {
+      background: white;
+      border: 1px solid #eeeaf5;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .admin-form {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field-full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #dcd6e5;
+      border-radius: 8px;
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .admin-button {
+      border: 0;
+      border-radius: 8px;
+      padding: 13px 20px;
+      background: #6d28d9;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    @media (max-width: 700px) {
+      .admin-form {
+        grid-template-columns: 1fr;
+      }
+
+      .field-full {
+        grid-column: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="admin-container">
+
+    <div class="admin-header">
+      <h1>HiTek — Administration</h1>
+      <p>Gestion du catalogue des appareils et accessoires.</p>
+    </div>
+
+    <section class="admin-card">
+
+      <h2>Ajouter un produit</h2>
+
+      <form class="admin-form" id="product-form">
+
+        <div class="field">
+          <label for="product-name">Nom du produit</label>
+          <input id="product-name" type="text" required>
+        </div>
+
+        <div class="field">
+          <label for="product-category">Catégorie</label>
+
+          <select id="product-category" required>
+            <option value="macbook">MacBook</option>
+            <option value="pc">PC portables</option>
+            <option value="mobile">Smartphones & tablettes</option>
+            <option value="accessoires">Accessoires</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="product-price">Prix ($)</label>
+          <input id="product-price" type="number" min="0" step="0.01" required>
+        </div>
+
+        <div class="field">
+          <label for="product-quantity">Quantité</label>
+          <input id="product-quantity" type="number" min="0" value="1" required>
+        </div>
+
+        <div class="field field-full">
+          <label for="product-description">Description</label>
+          <textarea id="product-description"></textarea>
+        </div>
+
+        <div class="field field-full">
+          <label for="product-image">Photo du produit</label>
+          <input id="product-image" type="file" accept="image/*">
+        </div>
+
+        <div class="field-full">
+          <button class="admin-button" type="submit">
+            Ajouter le produit
+          </button>
+        </div>
+
+      </form>
+
+    </section>
+
+    <section class="admin-card">
+      <h2>Produits du catalogue</h2>
+      <div id="product-list">
+        Aucun produit chargé.
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
