@@ -1063,7 +1063,8 @@ nav .lang-dropdown .lang-option:hover{
 }
   /* Catégories du catalogue */
 .catalogue-category {
-  display: block;
+  display: flex;
+  flex-direction: column;
   color: inherit;
   text-decoration: none;
   cursor: pointer;
@@ -1074,9 +1075,12 @@ nav .lang-dropdown .lang-option:hover{
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
-
+.catalogue-category p {
+  min-height: 48px;
+}
 .catalogue-category .price {
   color: #6d28d9;
+  margin-top: auto;
 }
 
 .accessory-icon {
