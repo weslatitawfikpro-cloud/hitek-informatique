@@ -328,13 +328,49 @@ if (imageFile) {
     return;
   }
 
-  const { error } = await supabaseClient
+  // Récupérer le produit avant de le supprimer
+  const { data: product, error: fetchError } = await supabaseClient
+    .from("products")
+    .select("image_url")
+    .eq("id", productId)
+    .single();
+
+  if (fetchError) {
+    console.error("Erreur récupération produit :", fetchError);
+    alert("Impossible de récupérer le produit.");
+    return;
+  }
+
+  // Supprimer la photo si le produit en possède une
+  if (product.image_url) {
+    const marker = "/product-images/";
+    const position = product.image_url.indexOf(marker);
+
+    if (position !== -1) {
+      const fileName = decodeURIComponent(
+        product.image_url.substring(position + marker.length)
+      );
+
+      const { error: imageError } = await supabaseClient.storage
+        .from("product-images")
+        .remove([fileName]);
+
+      if (imageError) {
+        console.error("Erreur suppression photo :", imageError);
+        alert("La photo n'a pas pu être supprimée.");
+        return;
+      }
+    }
+  }
+
+  // Supprimer le produit
+  const { error: deleteError } = await supabaseClient
     .from("products")
     .delete()
     .eq("id", productId);
 
-  if (error) {
-    console.error("Erreur suppression produit :", error);
+  if (deleteError) {
+    console.error("Erreur suppression produit :", deleteError);
     alert("Impossible de supprimer le produit.");
     return;
   }
