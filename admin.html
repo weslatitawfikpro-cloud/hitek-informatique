@@ -215,6 +215,7 @@ loginForm.addEventListener("submit", async function (event) {
 
 document.getElementById("login-section").style.display = "none";
 document.getElementById("admin-section").style.display = "block";
+  await loadProducts();
 });
 
     const productForm = document.getElementById("product-form");
