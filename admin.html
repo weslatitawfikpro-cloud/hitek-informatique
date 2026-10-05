@@ -208,13 +208,13 @@ loginForm.addEventListener("submit", async function (event) {
     password: password
   });
 
-  if (error) {
-    loginMessage.textContent = "Courriel ou mot de passe incorrect.";
-    return;
-  }
+ if (error) {
+  loginMessage.textContent = "Courriel ou mot de passe incorrect.";
+  return;
+}
 
-  loginMessage.textContent = "Connexion réussie.";
-  console.log("Administrateur connecté :", data.user);
+document.getElementById("login-section").style.display = "none";
+document.getElementById("admin-section").style.display = "block";
 });
 </script>
 </body>
