@@ -216,6 +216,44 @@ loginForm.addEventListener("submit", async function (event) {
 document.getElementById("login-section").style.display = "none";
 document.getElementById("admin-section").style.display = "block";
 });
+
+    const productForm = document.getElementById("product-form");
+
+productForm.addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const name = document.getElementById("product-name").value.trim();
+  const category = document.getElementById("product-category").value;
+  const description = document.getElementById("product-description").value.trim();
+  const quantity = Number(document.getElementById("product-quantity").value);
+
+  const priceValue = document.getElementById("product-price").value;
+  const price = priceValue === "" ? null : Number(priceValue);
+
+  const { data, error } = await supabaseClient
+    .from("products")
+    .insert({
+      name: name,
+      category: category,
+      description: description,
+      price: price,
+      quantity: quantity,
+      published: true
+    })
+    .select();
+
+  if (error) {
+    console.error("Erreur ajout produit :", error);
+    alert("Erreur lors de l'ajout du produit.");
+    return;
+  }
+
+  alert("Produit ajouté avec succès !");
+  console.log("Produit ajouté :", data);
+
+  productForm.reset();
+  document.getElementById("product-quantity").value = "1";
+});
 </script>
 </body>
 </html>
