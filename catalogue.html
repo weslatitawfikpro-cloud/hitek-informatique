@@ -225,20 +225,7 @@ const supabaseClient = supabase.createClient(
   SUPABASE_URL,
   SUPABASE_KEY
 );
-  async function testSupabase() {
-  const { data, error } = await supabaseClient
-    .from("products")
-    .select("*")
-    .eq("published", true);
 
-  if (error) {
-    console.error("Erreur Supabase :", error);
-  } else {
-    console.log("Produits Supabase :", data);
-  }
-}
-
-testSupabase();
   // Inventaire du catalogue
   const appareilsEnVente = [
     {
