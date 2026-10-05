@@ -226,6 +226,7 @@ productForm.addEventListener("submit", async function (event) {
   const category = document.getElementById("product-category").value;
   const description = document.getElementById("product-description").value.trim();
   const quantity = Number(document.getElementById("product-quantity").value);
+  const imageFile = document.getElementById("product-image").files[0];
 
   const priceValue = document.getElementById("product-price").value;
   const price = priceValue === "" ? null : Number(priceValue);
