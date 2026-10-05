@@ -230,7 +230,28 @@ productForm.addEventListener("submit", async function (event) {
 
   const priceValue = document.getElementById("product-price").value;
   const price = priceValue === "" ? null : Number(priceValue);
+let imageUrl = null;
 
+if (imageFile) {
+  const fileExtension = imageFile.name.split(".").pop();
+  const fileName = `${Date.now()}-${crypto.randomUUID()}.${fileExtension}`;
+
+  const { error: uploadError } = await supabaseClient.storage
+    .from("product-images")
+    .upload(fileName, imageFile);
+
+  if (uploadError) {
+    console.error("Erreur upload photo :", uploadError);
+    alert("Erreur lors de l'envoi de la photo.");
+    return;
+  }
+
+  const { data: publicUrlData } = supabaseClient.storage
+    .from("product-images")
+    .getPublicUrl(fileName);
+
+  imageUrl = publicUrlData.publicUrl;
+}
   const { data, error } = await supabaseClient
     .from("products")
     .insert({
@@ -239,6 +260,7 @@ productForm.addEventListener("submit", async function (event) {
       description: description,
       price: price,
       quantity: quantity,
+      image_url: imageUrl,
       published: true
     })
     .select();
