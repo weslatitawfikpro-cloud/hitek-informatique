@@ -319,6 +319,29 @@ if (imageFile) {
     productList.appendChild(item);
   });
 }
+    async function deleteProduct(productId) {
+  const confirmation = confirm(
+    "Voulez-vous vraiment supprimer ce produit ?"
+  );
+
+  if (!confirmation) {
+    return;
+  }
+
+  const { error } = await supabaseClient
+    .from("products")
+    .delete()
+    .eq("id", productId);
+
+  if (error) {
+    console.error("Erreur suppression produit :", error);
+    alert("Impossible de supprimer le produit.");
+    return;
+  }
+
+  alert("Produit supprimé avec succès.");
+  await loadProducts();
+}
 </script>
 </body>
 </html>
