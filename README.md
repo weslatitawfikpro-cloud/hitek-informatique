@@ -1,2 +1,2 @@
-# infoteck
-Site web InfoTeck - Réparation Mac, PC et smartphones
+# Hitek informatique
+Site web Hitek informatique - Réparation Mac, PC et smartphones
