@@ -386,7 +386,10 @@ const result = await supabaseClient
     return;
   }
 
-  alert("Produit ajouté avec succès !");
+  alert(editingProductId
+  ? "Produit modifié avec succès !"
+  : "Produit ajouté avec succès !"
+);
   console.log("Produit ajouté :", data);
 
   productForm.reset();
@@ -432,8 +435,12 @@ await loadProducts();
       <strong>${product.name}</strong>
       <p>Catégorie : ${product.category}</p>
       <p>Quantité : ${product.quantity}</p>
+      <p>Statut : ${product.published ? "🟢 Publié" : "⚪ Masqué"}</p>
       <button type="button" onclick="editProduct(${product.id})">
   Modifier
+</button>
+<button type="button" onclick="togglePublished(${product.id}, ${product.published})">
+  ${product.published ? "Masquer" : "Publier"}
 </button>
       <button type="button" onclick="deleteProduct(${product.id})">
   Supprimer
@@ -473,6 +480,24 @@ await loadProducts();
     behavior: "smooth"
   });
 }
+async function togglePublished(productId, currentStatus) {
+  const { error } = await supabaseClient
+    .from("products")
+    .update({
+      published: !currentStatus,
+      updated_at: new Date().toISOString()
+    })
+    .eq("id", productId);
+
+  if (error) {
+    console.error("Erreur changement statut :", error);
+    alert("Impossible de modifier le statut du produit.");
+    return;
+  }
+
+  await loadProducts();
+}
+    
     async function deleteProduct(productId) {
   const confirmation = confirm(
     "Voulez-vous vraiment supprimer ce produit ?"
