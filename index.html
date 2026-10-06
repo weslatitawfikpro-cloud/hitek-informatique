@@ -1748,6 +1748,17 @@ nav .lang-dropdown .lang-option:hover{
 <footer>
   © 2026 HiTek Informatique — Réparation Mac, PC & smartphones
 </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://pfoeasugxfdjveityhfn.supabase.co";
+const SUPABASE_KEY = "sb_publishable_dAVEh7oP_ZZYklySHh2fhQ_n8ZzTko1";
+
+const supabaseClient = supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+</script>
 <script>
 const slides = document.querySelectorAll('.hero-slider .slide');
 const dots = document.querySelectorAll('.slider-dots .dot');
@@ -1891,14 +1902,24 @@ appareilsEnVente.forEach(article => {
   destination.appendChild(carte);
 });
 
-// Mettre à jour le badge général à partir du même inventaire
-const nombreDisponible = appareilsEnVente.filter(
-  article => article.quantite > 0
-).length;
+// Mettre à jour le badge général depuis Supabase
+async function updateStockBadge() {
+  const badgeStock = document.getElementById("stock-badge");
 
-const badgeStock = document.getElementById("stock-badge");
+  if (!badgeStock) return;
 
-if (badgeStock) {
+  const { data, error } = await supabaseClient
+    .from("products")
+    .select("quantity")
+    .eq("published", true)
+    .gt("quantity", 0);
+
+  if (error) {
+    console.error("Erreur chargement du stock :", error);
+    return;
+  }
+
+  const nombreDisponible = data.length;
   const currentLang = localStorage.getItem("hitek-language") || "fr";
 
   if (nombreDisponible > 0) {
@@ -1918,6 +1939,7 @@ if (badgeStock) {
   }
 }
 
+updateStockBadge();
 </script>
   <script>
   const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
