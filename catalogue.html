@@ -217,6 +217,7 @@
   </section>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
 <script>
   const SUPABASE_URL = "https://pfoeasugxfdjveityhfn.supabase.co";
 const SUPABASE_KEY = "sb_publishable_dAVEh7oP_ZZYklySHh2fhQ_n8ZzTko1";
@@ -225,60 +226,26 @@ const supabaseClient = supabase.createClient(
   SUPABASE_URL,
   SUPABASE_KEY
 );
+async function loadCatalogue() {
+  const { data, error } = await supabaseClient
+    .from("products")
+    .select("*")
+    .eq("published", true)
+    .order("created_at", { ascending: false });
 
-  // Inventaire du catalogue
-  const appareilsEnVente = [
-    {
-      nom: "MacBook Pro",
-      categorie: "macbook",
-      image: "macbook pro 2013.png",
-      quantite: 1,
-      description: "MacBook Pro usagé. Caractéristiques sur demande."
-    },
-    {
-      nom: "Magic Keyboard",
-      categorie: "accessoires",
-      image: "clavier.png",
-      quantite: 1,
-      description: "Clavier sans fil Apple."
-    },
-    {
-      nom: "Magic Mouse",
-      categorie: "accessoires",
-      image: "souris.png",
-      quantite: 1,
-      description: "Souris sans fil Apple."
-    },
-    {
-      nom: "Chargeur USB-C pour MacBook",
-      categorie: "accessoires",
-      image: "chargeur macbook pro.png",
-      quantite: 5,
-      description: "Chargeur USB-C. Compatibilité selon le modèle."
-    },
-    {
-      nom: "Chargeur pour iPad",
-      categorie: "accessoires",
-      image: "chargeur apple.png",
-      quantite: 2,
-      description: "Chargeur pour iPad. Modèle à confirmer."
-    },
-    {
-      nom: "Mac mini",
-      categorie: "macbook",
-      image: "macmini.png",
-      quantite: 1,
-      description: "Mac mini usagé. Caractéristiques sur demande."
-    },
-    {
-      nom: "Deux écrans ViewSonic avec support",
-      categorie: "accessoires",
-      image: "ecran support.png",
-      quantite: 1,
-      description: "Ensemble de deux écrans avec support."
-    }
-  ];
+  if (error) {
+    console.error("Erreur chargement catalogue :", error);
+    return;
+  }
 
+  const appareilsEnVente = data.map(product => ({
+    nom: product.name,
+    categorie: product.category,
+    image: product.image_url,
+    quantite: product.quantity,
+    description: product.description || ""
+  }));
+  
   const destinations = {
     macbook: "articles-macbook",
     pc: "articles-pc",
@@ -330,6 +297,9 @@ const supabaseClient = supabase.createClient(
       destination.appendChild(carte);
     });
   }
+  }
+
+loadCatalogue();
 </script>
 
 </body>
