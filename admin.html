@@ -219,6 +219,8 @@ document.getElementById("admin-section").style.display = "block";
 });
 
     const productForm = document.getElementById("product-form");
+    let editingProductId = null;
+   
 
 productForm.addEventListener("submit", async function (event) {
   event.preventDefault();
@@ -231,9 +233,12 @@ productForm.addEventListener("submit", async function (event) {
 
   const priceValue = document.getElementById("product-price").value;
   const price = priceValue === "" ? null : Number(priceValue);
-let imageUrl = null;
+  
+  let imageUrl = editingProductId
+  ? window.editingProductImageUrl
+  : null;
 
-if (imageFile) {
+  if (imageFile) {
   const fileExtension = imageFile.name.split(".").pop();
   const fileName = `${Date.now()}-${crypto.randomUUID()}.${fileExtension}`;
 
@@ -253,7 +258,28 @@ if (imageFile) {
 
   imageUrl = publicUrlData.publicUrl;
 }
-  const { data, error } = await supabaseClient
+ let data;
+ let error;
+
+ if (editingProductId) {
+const result = await supabaseClient
+    .from("products")
+    .update({
+      name: name,
+      category: category,
+      description: description,
+      price: price,
+      quantity: quantity,
+      image_url: imageUrl,
+      updated_at: new Date().toISOString()
+    })
+    .eq("id", editingProductId)
+    .select();
+
+  data = result.data;
+  error = result.error;
+} else {
+  const result = await supabaseClient
     .from("products")
     .insert({
       name: name,
@@ -266,6 +292,10 @@ if (imageFile) {
     })
     .select();
 
+  data = result.data;
+  error = result.error;
+}
+
   if (error) {
     console.error("Erreur ajout produit :", error);
     alert("Erreur lors de l'ajout du produit.");
@@ -277,6 +307,13 @@ if (imageFile) {
 
   productForm.reset();
   document.getElementById("product-quantity").value = "1";
+  editingProductId = null;
+window.editingProductImageUrl = null;
+
+const submitButton = productForm.querySelector('button[type="submit"]');
+submitButton.textContent = "Ajouter le produit";
+
+await loadProducts();
 });
     async function loadProducts() {
   const productList = document.getElementById("product-list");
@@ -320,6 +357,36 @@ if (imageFile) {
     `;
 
     productList.appendChild(item);
+  });
+}
+    async function editProduct(productId) {
+      editingProductId = productId;
+      window.editingProductImageUrl = null;
+      
+  const { data: product, error } = await supabaseClient
+    .from("products")
+    .select("*")
+    .eq("id", productId)
+    .single();
+
+  if (error) {
+    console.error("Erreur récupération produit :", error);
+    alert("Impossible de charger le produit.");
+    return;
+  }
+  window.editingProductImageUrl = product.image_url || null;
+      
+  document.getElementById("product-name").value = product.name || "";
+  document.getElementById("product-category").value = product.category || "";
+  document.getElementById("product-price").value = product.price ?? "";
+  document.getElementById("product-quantity").value = product.quantity ?? 0;
+  document.getElementById("product-description").value = product.description || "";
+  const submitButton = productForm.querySelector('button[type="submit"]');
+  submitButton.textContent = "Enregistrer les modifications";
+      
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
   });
 }
     async function deleteProduct(productId) {
