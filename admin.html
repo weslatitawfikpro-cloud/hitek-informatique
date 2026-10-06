@@ -311,6 +311,9 @@ if (imageFile) {
       <strong>${product.name}</strong>
       <p>Catégorie : ${product.category}</p>
       <p>Quantité : ${product.quantity}</p>
+      <button type="button" onclick="editProduct(${product.id})">
+  Modifier
+</button>
       <button type="button" onclick="deleteProduct(${product.id})">
   Supprimer
 </button>
