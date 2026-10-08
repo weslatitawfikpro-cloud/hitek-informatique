@@ -299,7 +299,21 @@ async function loadCatalogue() {
   }
   }
 
-loadCatalogue();
+loadCatalogue().then(() => {
+  if (window.location.hash) {
+    const sectionId = decodeURIComponent(window.location.hash.substring(1));
+    const section = document.getElementById(sectionId);
+
+    if (section) {
+      requestAnimationFrame(() => {
+        section.scrollIntoView({
+          behavior: "auto",
+          block: "start"
+        });
+      });
+    }
+  }
+});
 </script>
 
 </body>
