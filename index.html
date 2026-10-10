@@ -1311,6 +1311,41 @@ nav .lang-dropdown .lang-option:hover{
     margin: 0 0 15px;
     border-radius: 12px;
 }
+  /* Uniformiser les deux cartes de rendez-vous */
+#choix-rendezvous .services {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+#choix-rendezvous .services .card {
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+#choix-rendezvous .services .card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+#choix-rendezvous .services .card a {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+/* Adaptation aux téléphones */
+@media (max-width: 768px) {
+    #choix-rendezvous .services {
+        grid-template-columns: 1fr;
+    }
+}
 </style>
 </head>
 
