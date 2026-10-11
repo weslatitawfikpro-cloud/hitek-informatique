@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Réparation et diagnostic informatique à Terrebonne, Laval et environs. Services Mac, PC et ordinateurs portables.">
+  <title>Réparation & diagnostic | HiTek Informatique</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #faf8ff;
+      color: #25223a;
+      line-height: 1.6;
+    }
+    header {
+      background: white;
+      border-bottom: 1px solid #eee8fa;
+      padding: 20px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .logo { color: #6738c7; font-size: 23px; font-weight: 800; text-decoration: none; }
+    .back { color: #6738c7; text-decoration: none; font-weight: bold; }
+    .hero { text-align: center; padding: 55px 20px 25px; }
+    .hero h1 { font-size: clamp(28px, 4vw, 40px); margin: 0 0 12px; }
+    .hero p { color: #69647b; max-width: 650px; margin: auto; }
+    .container {
+      max-width: 1180px;
+      margin: 30px auto 75px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: start;
+    }
+    .panel {
+      background: white;
+      padding: 32px;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(73, 41, 125, .07);
+    }
+    h2 { margin: 0 0 20px; font-size: 24px; }
+    .service { padding: 17px 0; border-bottom: 1px solid #eeeaf6; }
+    .service:last-child { border-bottom: none; }
+    .service h3 { margin: 0 0 5px; color: #6234bf; font-size: 17px; }
+    .service p { margin: 0; color: #686578; font-size: 15px; }
+    label { display: block; margin: 15px 0 6px; font-weight: bold; font-size: 14px; }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid #dcd5e9;
+      border-radius: 9px;
+      padding: 12px;
+      font: inherit;
+      background: #fff;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: 2px solid #b89bf3;
+      border-color: #7545d5;
+    }
+    textarea { min-height: 125px; resize: vertical; }
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 15px;
+      border: 0;
+      border-radius: 10px;
+      background: #713bce;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover { background: #5424b2; }
+    .note { font-size: 12px; color: #777186; margin-top: 14px; }
+    footer { text-align: center; padding: 25px; color: #777186; }
+    @media (max-width: 800px) {
+      header { padding: 17px 20px; }
+      .container { grid-template-columns: 1fr; }
+      .panel { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="logo" href="index.html">HiTek Informatique</a>
+    <a class="back" href="index.html">← Accueil</a>
+  </header>
+
+  <section class="hero">
+    <h1>Réparation & diagnostic informatique</h1>
+    <p>Des solutions pour vos ordinateurs Mac et PC,
+       à Terrebonne, Laval et dans les environs.</p>
+  </section>
+
+  <main class="container">
+    <section class="panel">
+      <h2>Nos prestations</h2>
+
+      <div class="service">
+        <h3>✓ Diagnostic informatique</h3>
+        <p>Recherche des causes de lenteurs, de pannes,
+           de problèmes de démarrage et d'erreurs système.</p>
+      </div>
+
+      <div class="service">
+        <h3>✓ Réparation Mac et PC</h3>
+        <p>Intervention sur les problèmes matériels et logiciels,
+           selon le modèle et la disponibilité des pièces.</p>
+      </div>
+
+      <div class="service">
+        <h3>✓ Installation de systèmes et logiciels</h3>
+        <p>Installation ou réinstallation de Windows et macOS,
+           configuration des logiciels et périphériques compatibles.</p>
+      </div>
+
+      <div class="service">
+        <h3>✓ Optimisation des performances</h3>
+        <p>Nettoyage logiciel, vérification des programmes au démarrage,
+           mise à niveau SSD ou mémoire lorsque possible.</p>
+      </div>
+
+      <div class="service">
+        <h3>✓ Sauvegarde et transfert de données</h3>
+        <p>Accompagnement pour sauvegarder ou transférer vos fichiers
+           lorsque l'état de l'appareil le permet.</p>
+      </div>
+
+      <div class="service">
+        <h3>✓ Maintenance préventive</h3>
+        <p>Vérification des mises à jour, de l'état du stockage
+           et des principaux paramètres de fonctionnement.</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Demander une intervention</h2>
+      <p>Décrivez votre problème et nous vous contacterons
+         pour discuter des solutions possibles.</p>
+
+      <form action="https://formspree.io/f/xqpelggz" method="POST">
+        <input type="hidden" name="service" value="Réparation & diagnostic">
+        <input type="hidden" name="_subject" value="HiTek - Demande de réparation">
+
+        <label for="nom">Nom complet *</label>
+        <input id="nom" name="nom" type="text" autocomplete="name" required>
+
+        <label for="email">Adresse courriel *</label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+
+        <label for="telephone">Téléphone *</label>
+        <input id="telephone" name="telephone" type="tel" autocomplete="tel" required>
+
+        <label for="appareil">Type d'appareil *</label>
+        <select id="appareil" name="appareil" required>
+          <option value="">Sélectionner</option>
+          <option>Ordinateur portable Windows</option>
+          <option>Ordinateur de bureau</option>
+          <option>MacBook / iMac</option>
+          <option>Smartphone</option>
+          <option>Autre appareil</option>
+        </select>
+
+        <label for="probleme">Décrivez le problème *</label>
+        <textarea id="probleme" name="message"
+          placeholder="Ex. : mon ordinateur est très lent depuis plusieurs jours..."
+          required></textarea>
+
+        <button type="submit">Envoyer ma demande →</button>
+
+        <p class="note">
+          Ne transmettez aucun mot de passe ni renseignement sensible.
+          Vos coordonnées seront utilisées pour répondre à votre demande.
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <footer>© 2026 HiTek Informatique</footer>
+</body>
+</html>
