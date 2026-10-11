@@ -1412,7 +1412,21 @@ nav .lang-dropdown .lang-option:hover{
         display: inline-block;
     }
 }
-  
+  #choix-rendezvous .service-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#choix-rendezvous .service-actions a {
+    display: inline-flex !important;
+    width: auto !important;
+    margin: 0 !important;
+    align-items: center;
+    justify-content: center;
+}
 </style>
 </head>
 
@@ -1661,12 +1675,18 @@ nav .lang-dropdown .lang-option:hover{
       <h3>Réparation & diagnostic</h3>
       <p>Mac, PC, smartphones, dépannage, diagnostic et optimisation.</p>
 
-      <a href="https://cal.com/hitek-informatique/30min"
-   target="_blank"
-   rel="noopener noreferrer">
-  Prendre rendez-vous
-</a>
-    <a class="details-link" href="reparation.html">Plus de détails</a>
+<div class="service-actions">
+    <a href="https://cal.com/hitek-informatique/30min"
+       target="_blank"
+       rel="noopener noreferrer">
+        Prendre rendez-vous
+    </a>
+
+    <a class="details-link" href="reparation.html">
+        Plus de détails
+    </a>
+</div>
+   
     
     </div>
 
