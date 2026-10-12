@@ -1434,6 +1434,27 @@ nav .lang-dropdown .lang-option:hover{
     font-size: 16px !important;
     font-weight: 600;
 }
+  /* Bouton retour en haut */
+.retour-haut {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: #7227e8;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    display: none;
+}
+
+.retour-haut:hover {
+    background: #5419b8;
+}
 </style>
 </head>
 
@@ -2327,6 +2348,18 @@ document.querySelectorAll(".lang-option").forEach(option => {
 
 const savedLanguage = localStorage.getItem("hitek-language") || "fr";
 changeLanguage(savedLanguage);
+</script>
+  <button class="retour-haut" id="retourHaut"
+        aria-label="Retour en haut"
+        onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    ↑
+</button>
+
+<script>
+window.addEventListener('scroll', function() {
+    const bouton = document.getElementById('retourHaut');
+    bouton.style.display = window.scrollY > 300 ? 'block' : 'none';
+});
 </script>
 </body>
 </html>
