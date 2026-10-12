@@ -1618,7 +1618,8 @@ nav .lang-dropdown .lang-option:hover{
 </p>
 
 <div class="buttons">
-  <a class="button primary" href="#choix-rendezvous" data-i18n="hero-book"
+  <a class="button primary" href="#choix-rendezvous"
+   data-i18n="hero-book"
    style="display:inline-flex;align-items:center;gap:8px;">
 
   <svg width="17" height="17" viewBox="0 0 24 24"
@@ -1629,7 +1630,7 @@ nav .lang-dropdown .lang-option:hover{
     <path d="M16 3v4M8 3v4M3 10h18"/>
   </svg>
 
-  Prendre rendez-vous
+  <span class="button-text">Prendre rendez-vous</span>
 </a>
 
   <a class="button secondary" href="#services" data-i18n="hero-services">
@@ -2339,7 +2340,14 @@ function changeLanguage(lang) {
     const key = element.getAttribute("data-i18n");
 
     if (translations[lang] && translations[lang][key]) {
-      element.innerHTML = translations[lang][key];
+     if (key === "hero-book") {
+    const texte = element.querySelector(".button-text");
+    if (texte) {
+        texte.textContent = translations[lang][key];
+    }
+} else {
+    element.innerHTML = translations[lang][key];
+}
     }
   });
 
