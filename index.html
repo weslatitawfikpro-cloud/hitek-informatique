@@ -2958,5 +2958,37 @@ function hitekToggleChat() {
   }, 5000);
 })();
 </script>
+  <script>
+function hitekQuickMessage(service) {
+  const messages = document.getElementById('hitek-chat-messages');
+  if (!messages) return;
+
+  const reponses = {
+    "Réparer mon ordinateur":
+      "🔧 Bien sûr ! Quel appareil souhaitez-vous réparer (PC, Mac ou téléphone) ? Décrivez-moi le problème rencontré.",
+
+    "Conseils en cybersécurité":
+      "🛡️ Nous pouvons vous accompagner en cybersécurité. Cherchez-vous à protéger un appareil, supprimer un virus ou sécuriser votre entreprise ?",
+
+    "Création graphique":
+      "🎨 Avec plaisir ! Souhaitez-vous créer un logo, une carte professionnelle, une affiche ou un autre visuel ?",
+
+    "Prendre rendez-vous":
+      "📅 Vous souhaitez prendre rendez-vous ? Précisez le service souhaité et nous vous aiderons à organiser votre intervention."
+  };
+
+  const question = document.createElement('div');
+  question.className = 'hitek-chat-bubble hitek-chat-user';
+  question.textContent = service;
+  messages.appendChild(question);
+
+  const reponse = document.createElement('div');
+  reponse.className = 'hitek-chat-bubble';
+  reponse.textContent = reponses[service] || "Comment puis-je vous aider ?";
+  messages.appendChild(reponse);
+
+  messages.scrollTop = messages.scrollHeight;
+}
+</script>
 </body>
 </html>
