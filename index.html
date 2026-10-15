@@ -2963,31 +2963,94 @@ function hitekQuickMessage(service) {
   const messages = document.getElementById('hitek-chat-messages');
   if (!messages) return;
 
+  function afficher(texte, utilisateur = false) {
+    const bulle = document.createElement('div');
+    bulle.className = utilisateur
+      ? 'hitek-chat-bubble hitek-chat-user'
+      : 'hitek-chat-bubble';
+    bulle.textContent = texte;
+    messages.appendChild(bulle);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  afficher(service, true);
+
+  if (service === 'Réparer mon ordinateur') {
+    afficher('🔧 Quel type d’appareil souhaitez-vous réparer ?');
+
+    const choix = document.createElement('div');
+    choix.style.cssText =
+      'display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;';
+
+    ['💻 PC portable', '🖥️ PC de bureau', '🍎 Mac', '📱 Téléphone']
+      .forEach(appareil => {
+        const bouton = document.createElement('button');
+        bouton.type = 'button';
+        bouton.textContent = appareil;
+        bouton.style.cssText =
+          'padding:9px 12px;border:1px solid #ddd;border-radius:12px;background:#f4efff;color:#502090;cursor:pointer;font-size:13px;';
+
+        bouton.onclick = function() {
+          afficher(appareil, true);
+          choix.remove();
+
+          afficher('Quel problème rencontrez-vous avec votre appareil ?');
+
+          const problemes = document.createElement('div');
+          problemes.style.cssText =
+            'display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;';
+
+          [
+            'Ne démarre plus',
+            'Écran noir',
+            'Très lent',
+            'Problème de batterie',
+            'Autre problème'
+          ].forEach(probleme => {
+            const option = document.createElement('button');
+            option.type = 'button';
+            option.textContent = probleme;
+            option.style.cssText = bouton.style.cssText;
+
+            option.onclick = function() {
+              afficher(probleme, true);
+              problemes.remove();
+
+              afficher(
+                'Merci pour ces informations ! 🔧 ' +
+                'Un diagnostic technique permettra de déterminer la cause exacte. ' +
+                'Vous pouvez prendre rendez-vous avec HiTek Informatique ' +
+                'pour faire vérifier votre appareil.'
+              );
+            };
+
+            problemes.appendChild(option);
+          });
+
+          messages.appendChild(problemes);
+          messages.scrollTop = messages.scrollHeight;
+        };
+
+        choix.appendChild(bouton);
+      });
+
+    messages.appendChild(choix);
+    messages.scrollTop = messages.scrollHeight;
+    return;
+  }
+
   const reponses = {
-    "Réparer mon ordinateur":
-      "🔧 Bien sûr ! Quel appareil souhaitez-vous réparer (PC, Mac ou téléphone) ? Décrivez-moi le problème rencontré.",
+    'Conseils en cybersécurité':
+      '🛡️ Souhaitez-vous protéger votre ordinateur, supprimer un virus ou sécuriser votre entreprise ?',
 
-    "Conseils en cybersécurité":
-      "🛡️ Nous pouvons vous accompagner en cybersécurité. Cherchez-vous à protéger un appareil, supprimer un virus ou sécuriser votre entreprise ?",
+    'Création graphique':
+      '🎨 Souhaitez-vous créer un logo, une carte professionnelle, une affiche ou un autre visuel ?',
 
-    "Création graphique":
-      "🎨 Avec plaisir ! Souhaitez-vous créer un logo, une carte professionnelle, une affiche ou un autre visuel ?",
-
-    "Prendre rendez-vous":
-      "📅 Vous souhaitez prendre rendez-vous ? Précisez le service souhaité et nous vous aiderons à organiser votre intervention."
+    'Prendre rendez-vous':
+      '📅 Pour prendre rendez-vous, utilisez notre service de réservation sur le site HiTek Informatique.'
   };
 
-  const question = document.createElement('div');
-  question.className = 'hitek-chat-bubble hitek-chat-user';
-  question.textContent = service;
-  messages.appendChild(question);
-
-  const reponse = document.createElement('div');
-  reponse.className = 'hitek-chat-bubble';
-  reponse.textContent = reponses[service] || "Comment puis-je vous aider ?";
-  messages.appendChild(reponse);
-
-  messages.scrollTop = messages.scrollHeight;
+  afficher(reponses[service] || 'Comment puis-je vous aider ?');
 }
 </script>
 </body>
