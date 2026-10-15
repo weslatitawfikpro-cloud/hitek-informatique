@@ -2513,9 +2513,10 @@ window.addEventListener('scroll', function() {
 #hitek-chat-btn {
   position: fixed;
   bottom: 25px;
-  left: 25px;
-  width: 70px;
-  height: 70px;
+  right: 15px;
+  left: auto;
+  width: 90px;
+  height: 90px;
   padding: 0;
   border: none;
   background: transparent;
@@ -2524,6 +2525,7 @@ window.addEventListener('scroll', function() {
   cursor: pointer;
   z-index: 9999;
   box-shadow: none;
+  animation: hitek-chat-slide 4s ease-in-out infinite;
 }
 
 #hitek-chat-btn img {
@@ -2531,6 +2533,22 @@ window.addEventListener('scroll', function() {
   height: 100%;
   object-fit: contain;
   display: block;
+}
+
+@keyframes hitek-chat-slide {
+  0%, 100% {
+    transform: translateX(25px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #hitek-chat-btn {
+    animation: none;
+    transform: none;
+  }
 }
 </style>
   <!-- FENÊTRE HITEK ASSISTANT -->
@@ -2581,7 +2599,8 @@ window.addEventListener('scroll', function() {
   display: none;
   position: fixed;
   bottom: 105px;
-  left: 25px;
+  right: 15px;
+  left: auto;
   width: 370px;
   max-width: calc(100vw - 40px);
   height: 490px;
