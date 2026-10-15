@@ -2506,7 +2506,7 @@ window.addEventListener('scroll', function() {
         type="button"
         onclick="hitekToggleChat()"
         aria-label="Ouvrir HiTek Assistant">
-  <img src="chatbot.png" alt="">
+  <img src="chatbot1.png" alt="">
 </button>
 
 <style>
@@ -2764,5 +2764,19 @@ window.addEventListener('scroll', function() {
 
 #hitek-chat-text {
   flex: 
+  <script>
+function hitekToggleChat() {
+  const box = document.getElementById('hitek-chat-box');
+
+  if (!box) {
+    console.error("Fenêtre HiTek Assistant introuvable");
+    return;
+  }
+
+  const isOpen = window.getComputedStyle(box).display !== 'none';
+
+  box.style.display = isOpen ? 'none' : 'flex';
+}
+</script>
 </body>
 </html>
