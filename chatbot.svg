@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="Logo chatbot HiTek avec cercle lumineux violet, fond transparent">
+<defs>
+ <radialGradient id="disc" cx="36%" cy="26%" r="85%"><stop stop-color="#fff"/><stop offset=".63" stop-color="#fffaff"/><stop offset=".88" stop-color="#f0eaff"/><stop offset="1" stop-color="#d9c6ff"/></radialGradient>
+ <linearGradient id="rim" x1=".1" y1="0" x2=".9" y2="1"><stop stop-color="#fff"/><stop offset=".48" stop-color="#f8eaff"/><stop offset=".75" stop-color="#e7ccff"/><stop offset="1" stop-color="#a77aff"/></linearGradient>
+ <linearGradient id="chat" x1="0" y1=".7" x2="1" y2=".2"><stop stop-color="#ffae00"/><stop offset=".23" stop-color="#ff6c34"/><stop offset=".52" stop-color="#f62d8a"/><stop offset=".77" stop-color="#df16db"/><stop offset="1" stop-color="#9724ff"/></linearGradient>
+ <linearGradient id="eyes" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff9d15"/><stop offset=".5" stop-color="#fa3c70"/><stop offset="1" stop-color="#c821e9"/></linearGradient>
+ <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="38"/></filter>
+ <filter id="soft" x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="8"/></filter>
+</defs>
+<!-- transparent exterior, retained violet luminous halo -->
+<circle cx="512" cy="512" r="375" fill="#a44bff" opacity=".35" filter="url(#glow)"/>
+<circle cx="512" cy="512" r="344" fill="url(#rim)"/>
+<circle cx="512" cy="502" r="329" fill="url(#disc)"/>
+<path d="M232 666 A333 333 0 0 0 781 723" fill="none" stroke="#9b65ff" stroke-width="17" opacity=".22" filter="url(#soft)"/>
+<path d="M265 385 A315 315 0 0 1 735 284" fill="none" stroke="#fff" stroke-width="11" opacity=".76"/>
+<!-- chatbot headset + speech bubble silhouette -->
+<path fill="url(#chat)" d="M329 426 C357 342 430 296 522 296 C629 296 714 359 736 452 C759 457 775 479 775 506 C775 535 757 556 731 563 C707 639 647 687 555 687 L461 687 L371 747 C357 756 340 744 345 727 L371 654 C339 628 313 598 302 558 C276 550 262 528 262 503 C262 476 281 450 308 447 C314 440 322 431 329 426 Z"/>
+<path fill="url(#disc)" d="M522 327 C419 327 349 395 349 493 C349 559 382 612 429 636 L412 687 L452 658 L552 658 C655 658 705 588 705 499 C705 401 632 327 522 327 Z"/>
+<circle cx="447" cy="510" r="33" fill="#ff5264"/>
+<circle cx="582" cy="510" r="33" fill="#db22dc"/>
+</svg>
