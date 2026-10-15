@@ -2540,11 +2540,12 @@ window.addEventListener('scroll', function() {
   
 </script>
   <!-- BOUTON CHATBOT HITEK -->
-<button id="hitek-chat-btn"
-  <!-- Invitation flottante HiTek -->
+<!-- Invitation flottante HiTek -->
 <div id="hitek-chat-invite">
-  <button type="button" class="hitek-invite-close"
-    onclick="document.getElementById('hitek-chat-invite').style.display='none'">
+  <button type="button"
+          class="hitek-invite-close"
+          aria-label="Fermer l'invitation"
+          onclick="document.getElementById('hitek-chat-invite').style.display='none'">
     ×
   </button>
 
@@ -2553,8 +2554,11 @@ window.addEventListener('scroll', function() {
     <span>Besoin d'aide ? Discutons !</span>
   </div>
 </div>
+
+<!-- Bouton chatbot HiTek -->
+<button id="hitek-chat-btn"
         type="button"
-       onclick="var chat=document.getElementById('hitek-chat-box'); if(chat){chat.style.display=window.getComputedStyle(chat).display==='none'?'flex':'none';}"
+        onclick="var chat=document.getElementById('hitek-chat-box'); if(chat){chat.style.display=window.getComputedStyle(chat).display==='none'?'flex':'none';}"
         aria-label="Ouvrir HiTek Assistant">
   <img src="chatbot.svg" alt="">
 </button>
