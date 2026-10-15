@@ -2669,9 +2669,9 @@ window.addEventListener('scroll', function() {
             onclick="hitekToggleChat()"
             aria-label="Réduire la conversation">−</button>
 
-    <button type="button"
-            onclick="hitekToggleChat()"
-            aria-label="Fermer la conversation">×</button>
+<button type="button"
+  onclick="document.getElementById('hitek-chat-box').style.display='none'"
+  aria-label="Fermer la conversation">×</button>
   </div>
 
 </div>
@@ -2939,6 +2939,57 @@ window.addEventListener('scroll', function() {
   font-size: 18px;
   line-height: 1;
   cursor: pointer;
+}
+  /* En-tête HiTek Assistant */
+#hitek-chat-box .hitek-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 16px;
+}
+
+/* Logo agrandi */
+#hitek-chat-box .hitek-header-logo {
+  width: 55px !important;
+  height: 55px !important;
+  min-width: 55px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Informations de l'assistant */
+#hitek-chat-box .hitek-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Boutons à droite */
+#hitek-chat-box .hitek-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+#hitek-chat-box .hitek-header-actions button {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+#hitek-chat-box .hitek-header-actions button:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 </style>
   <script>
