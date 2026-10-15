@@ -1469,6 +1469,25 @@ nav .lang-dropdown .lang-option:hover{
 .retour-haut:hover {
     background: #5419b8;
 }
+  .hitek-chat-invitation {
+  width: auto !important;
+  min-width: 230px;
+  padding: 0 18px !important;
+  border-radius: 40px !important;
+  font-size: 14px !important;
+  animation: hitek-chat-appear 0.4s ease-out;
+}
+
+@keyframes hitek-chat-appear {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 </style>
 </head>
 
@@ -2424,6 +2443,63 @@ window.addEventListener('scroll', function() {
     const bouton = document.getElementById('retourHaut');
     bouton.style.display = window.scrollY > 300 ? 'block' : 'none';
 });
+  // Invitation automatique HiTek Assistant
+(function () {
+  let hasScrolled = false;
+  let hasWaited = false;
+  let invitationShown = false;
+
+  function showInvitation() {
+    if (!hasScrolled || !hasWaited || invitationShown) return;
+    if (sessionStorage.getItem('hitek-chat-invited')) return;
+
+    const button = document.getElementById('hitek-chat-btn');
+    if (!button) return;
+
+    invitationShown = true;
+    sessionStorage.setItem('hitek-chat-invited', 'yes');
+
+    button.innerHTML = '💬 Bonjour ! Besoin d’aide ?';
+    button.classList.add('hitek-chat-invitation');
+
+    // Le navigateur peut bloquer ce son sans interaction préalable
+    try {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioContextClass) {
+        const audio = new AudioContextClass();
+        if (audio.state === 'running') {
+          const oscillator = audio.createOscillator();
+          const gain = audio.createGain();
+          oscillator.connect(gain);
+          gain.connect(audio.destination);
+          oscillator.frequency.value = 700;
+          gain.gain.value = 0.025;
+          oscillator.start();
+          oscillator.stop(audio.currentTime + 0.12);
+        }
+        setTimeout(() => audio.close(), 500);
+      }
+    } catch (e) {}
+
+    setTimeout(() => {
+      button.textContent = '💬';
+      button.classList.remove('hitek-chat-invitation');
+    }, 7000);
+  }
+
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 150) {
+      hasScrolled = true;
+      showInvitation();
+    }
+  }, { passive: true });
+
+  setTimeout(function () {
+    hasWaited = true;
+    showInvitation();
+  }, 5000);
+})();
+  
 </script>
 </body>
 </html>
