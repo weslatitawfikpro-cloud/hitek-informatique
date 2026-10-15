@@ -2884,7 +2884,32 @@ window.addEventListener('scroll', function() {
 }
 
 #hitek-chat-text {
-  flex: 
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #e4dcf1;
+  border-radius: 25px;
+  padding: 12px 15px;
+  font-size: 14px;
+  outline: none;
+  background: #fff;
+}
+
+#hitek-chat-text:focus {
+  border-color: #802cff;
+}
+
+.hitek-chat-input button {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: #802cff;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+</style>
   <script>
 function hitekToggleChat() {
   const box = document.getElementById('hitek-chat-box');
