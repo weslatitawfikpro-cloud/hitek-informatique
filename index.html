@@ -2840,9 +2840,12 @@ window.addEventListener('scroll', function() {
 }
 #hitek-chat-messages {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
-  padding: 18px;
+  overflow-x: hidden;
+  padding: 18px 18px 35px;
   color: #211435;
+  scroll-behavior: smooth;
 }
 
 .hitek-chat-bubble {
