@@ -2910,7 +2910,36 @@ window.addEventListener('scroll', function() {
   font-size: 22px;
   cursor: pointer;
 }
+/* HiTek Assistant — correction de l'en-tête */
 
+/* Agrandir le logo */
+#hitek-chat-box .hitek-chat-header img {
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px;
+  object-fit: contain;
+}
+
+/* Améliorer l'alignement de l'en-tête */
+#hitek-chat-box .hitek-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Garder les boutons à droite */
+#hitek-chat-box .hitek-chat-header button {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
 </style>
   <script>
 function hitekToggleChat() {
