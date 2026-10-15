@@ -2504,7 +2504,7 @@ window.addEventListener('scroll', function() {
   <!-- BOUTON CHATBOT HITEK -->
 <button id="hitek-chat-btn"
         type="button"
-        onclick="hitekToggleChat()"
+       onclick="var chat=document.getElementById('hitek-chat-box'); if(chat){chat.style.display=window.getComputedStyle(chat).display==='none'?'flex':'none';}"
         aria-label="Ouvrir HiTek Assistant">
   <img src="chatbot.svg" alt="">
 </button>
