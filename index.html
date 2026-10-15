@@ -2556,13 +2556,29 @@ window.addEventListener('scroll', function() {
      aria-label="HiTek Assistant" aria-modal="false">
 
   <div class="hitek-chat-header">
-    <div>
-      <strong>HiTek Assistant</strong>
-      <small>Assistant virtuel • FR / EN</small>
-    </div>
-    <button type="button" onclick="hitekToggleChat()"
-            aria-label="Fermer la conversation">✕</button>
+
+  <img src="chatbot.png" alt="" class="hitek-header-logo">
+
+  <div class="hitek-header-info">
+    <strong>HiTek Assistant</strong>
+    <small>Assistant virtuel • FR / EN</small>
+    <span class="hitek-online">
+      <span class="hitek-online-dot"></span>
+      En ligne
+    </span>
   </div>
+
+  <div class="hitek-header-actions">
+    <button type="button"
+            onclick="hitekToggleChat()"
+            aria-label="Réduire la conversation">−</button>
+
+    <button type="button"
+            onclick="hitekToggleChat()"
+            aria-label="Fermer la conversation">×</button>
+  </div>
+
+</div>
 
   <div id="hitek-chat-messages" aria-live="polite">
     <div class="hitek-chat-bubble">
@@ -2636,7 +2652,68 @@ window.addEventListener('scroll', function() {
   font-size: 22px;
   cursor: pointer;
 }
+.hitek-chat-header {
+  background: linear-gradient(120deg, #21072f, #421278, #6823b5);
+  padding: 20px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+}
 
+.hitek-header-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.hitek-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.hitek-header-info strong {
+  display: block;
+  font-size: 18px;
+}
+
+.hitek-header-info small {
+  display: block;
+  font-size: 12px;
+  color: #d9c8ec;
+  margin-top: 4px;
+}
+
+.hitek-online {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 7px;
+  font-size: 12px;
+  color: #e6dff0;
+}
+
+.hitek-online-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #00d89a;
+}
+
+.hitek-header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.hitek-header-actions button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+  padding: 2px 5px;
+}
 #hitek-chat-messages {
   flex: 1;
   overflow-y: auto;
