@@ -2459,7 +2459,7 @@ window.addEventListener('scroll', function() {
     invitationShown = true;
     sessionStorage.setItem('hitek-chat-invited', 'yes');
 
-    button.innerHTML = '💬 Bonjour ! Besoin d’aide ?';
+    button.title = 'Bonjour ! Besoin d’aide ?';
     button.classList.add('hitek-chat-invitation');
 
     // Le navigateur peut bloquer ce son sans interaction préalable
@@ -2482,7 +2482,7 @@ window.addEventListener('scroll', function() {
     } catch (e) {}
 
     setTimeout(() => {
-      button.textContent = '💬';
+      button.title = 'Discuter avec HiTek';
       button.classList.remove('hitek-chat-invitation');
     }, 7000);
   }
@@ -2501,5 +2501,37 @@ window.addEventListener('scroll', function() {
 })();
   
 </script>
+  <!-- BOUTON CHATBOT HITEK -->
+<button id="hitek-chat-btn"
+        type="button"
+        onclick="hitekToggleChat()"
+        aria-label="Ouvrir HiTek Assistant">
+  <img src="chatbot.png" alt="">
+</button>
+
+<style>
+#hitek-chat-btn {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  width: 70px;
+  height: 70px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #160625;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 4px 20px rgba(112,44,255,0.4);
+}
+
+#hitek-chat-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+</style>
 </body>
 </html>
