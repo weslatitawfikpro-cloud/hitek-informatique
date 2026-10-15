@@ -1488,6 +1488,44 @@ nav .lang-dropdown .lang-option:hover{
     transform: translateY(0);
   }
 }
+  .hitek-chat-menu button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 76px;
+  padding: 12px 15px;
+  border-radius: 15px;
+  width: 100%;
+}
+
+.hitek-service-icon {
+  font-size: 27px;
+  flex-shrink: 0;
+}
+
+.hitek-service-info {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+.hitek-service-info strong {
+  display: block;
+  font-size: 14px;
+  color: #20104a;
+  margin-bottom: 5px;
+}
+
+.hitek-service-info small {
+  display: block;
+  font-size: 12px;
+  color: #77708f;
+}
+
+.hitek-service-arrow {
+  font-size: 30px;
+  color: #702cff;
+}
 </style>
 </head>
 
@@ -2586,20 +2624,45 @@ window.addEventListener('scroll', function() {
       Comment puis-je vous aider aujourd'hui ?
     </div>
 
-    <div class="hitek-chat-menu">
-      <button type="button" onclick="hitekQuickMessage('Réparer mon ordinateur')">
-        🔧 Réparer mon ordinateur
-      </button>
-      <button type="button" onclick="hitekQuickMessage('Conseils en cybersécurité')">
-        🛡️ Conseils en cybersécurité
-      </button>
-      <button type="button" onclick="hitekQuickMessage('Création graphique')">
-        🎨 Création graphique
-      </button>
-      <button type="button" onclick="hitekQuickMessage('Prendre rendez-vous')">
-        📅 Prendre rendez-vous
-      </button>
-    </div>
+   <div class="hitek-chat-menu">
+
+  <button type="button" onclick="hitekQuickMessage('Réparer mon ordinateur')">
+    <span class="hitek-service-icon">🔧</span>
+    <span class="hitek-service-info">
+      <strong>Réparer mon ordinateur</strong>
+      <small>Diagnostic, réparation et conseils</small>
+    </span>
+    <span class="hitek-service-arrow">›</span>
+  </button>
+
+  <button type="button" onclick="hitekQuickMessage('Conseils en cybersécurité')">
+    <span class="hitek-service-icon">🛡️</span>
+    <span class="hitek-service-info">
+      <strong>Conseils en cybersécurité</strong>
+      <small>Protection, virus, confidentialité</small>
+    </span>
+    <span class="hitek-service-arrow">›</span>
+  </button>
+
+  <button type="button" onclick="hitekQuickMessage('Création graphique')">
+    <span class="hitek-service-icon">🎨</span>
+    <span class="hitek-service-info">
+      <strong>Création graphique</strong>
+      <small>Logo, design, cartes et plus</small>
+    </span>
+    <span class="hitek-service-arrow">›</span>
+  </button>
+
+  <button type="button" onclick="hitekQuickMessage('Prendre rendez-vous')">
+    <span class="hitek-service-icon">📅</span>
+    <span class="hitek-service-info">
+      <strong>Prendre rendez-vous</strong>
+      <small>Planifier une intervention</small>
+    </span>
+    <span class="hitek-service-arrow">›</span>
+  </button>
+
+</div>
   </div>
 
   <form class="hitek-chat-input" onsubmit="hitekSend(event)">
