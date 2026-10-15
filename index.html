@@ -2533,5 +2533,140 @@ window.addEventListener('scroll', function() {
   display: block;
 }
 </style>
+  <!-- FENÊTRE HITEK ASSISTANT -->
+<div id="hitek-chat-box" role="dialog"
+     aria-label="HiTek Assistant" aria-modal="false">
+
+  <div class="hitek-chat-header">
+    <div>
+      <strong>HiTek Assistant</strong>
+      <small>Assistant virtuel • FR / EN</small>
+    </div>
+    <button type="button" onclick="hitekToggleChat()"
+            aria-label="Fermer la conversation">✕</button>
+  </div>
+
+  <div id="hitek-chat-messages" aria-live="polite">
+    <div class="hitek-chat-bubble">
+      Bonjour ! 👋 Bienvenue chez HiTek Informatique !
+      Comment puis-je vous aider aujourd'hui ?
+    </div>
+
+    <div class="hitek-chat-menu">
+      <button type="button" onclick="hitekQuickMessage('Réparer mon ordinateur')">
+        🔧 Réparer mon ordinateur
+      </button>
+      <button type="button" onclick="hitekQuickMessage('Conseils en cybersécurité')">
+        🛡️ Conseils en cybersécurité
+      </button>
+      <button type="button" onclick="hitekQuickMessage('Création graphique')">
+        🎨 Création graphique
+      </button>
+      <button type="button" onclick="hitekQuickMessage('Prendre rendez-vous')">
+        📅 Prendre rendez-vous
+      </button>
+    </div>
+  </div>
+
+  <form class="hitek-chat-input" onsubmit="hitekSend(event)">
+    <input id="hitek-chat-text" type="text"
+           placeholder="Écrivez votre message..."
+           aria-label="Votre message">
+    <button type="submit" aria-label="Envoyer">➤</button>
+  </form>
+</div>
+
+<style>
+#hitek-chat-box {
+  display: none;
+  position: fixed;
+  bottom: 105px;
+  left: 25px;
+  width: 370px;
+  max-width: calc(100vw - 40px);
+  height: 490px;
+  max-height: calc(100dvh - 125px);
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  z-index: 9999;
+  box-shadow: 0 10px 40px rgba(0,0,0,.25);
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
+
+.hitek-chat-header {
+  background: linear-gradient(120deg,#160625,#54218d);
+  color: white;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hitek-chat-header small {
+  display: block;
+  margin-top: 5px;
+  color: #d8c8e8;
+}
+
+.hitek-chat-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+#hitek-chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px;
+  color: #211435;
+}
+
+.hitek-chat-bubble {
+  background: #f1ecfa;
+  padding: 14px;
+  border-radius: 16px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.hitek-chat-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hitek-chat-menu button {
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  color: #211435;
+}
+
+.hitek-chat-menu button:nth-child(1) { background: #f0e7ff; }
+.hitek-chat-menu button:nth-child(2) { background: #e5f0ff; }
+.hitek-chat-menu button:nth-child(3) { background: #ffe8ef; }
+.hitek-chat-menu button:nth-child(4) { background: #e0f7ee; }
+
+.hitek-chat-menu button:hover {
+  filter: brightness(.96);
+}
+
+.hitek-chat-input {
+  display: flex;
+  padding: 12px;
+  gap: 8px;
+  border-top: 1px solid #eee;
+}
+
+#hitek-chat-text {
+  flex: 
 </body>
 </html>
