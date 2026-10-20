@@ -3131,7 +3131,47 @@ function hitekQuickMessage(service) {
     messages.scrollTop = messages.scrollHeight;
     return;
   }
+if (service === 'Création graphique' ||
+    service === 'Conseils en cybersécurité') {
 
+    const options = service === 'Création graphique'
+        ? ['🎨 Logo', '💼 Carte professionnelle', '🖼️ Affiche', '✨ Autre visuel']
+        : ['🦠 Virus', '🔐 Compte piraté', '🛡️ Protection ordinateur', '🏢 Sécurité entreprise'];
+
+    afficher(
+        service === 'Création graphique'
+            ? 'Quel type de création graphique souhaitez-vous ?'
+            : 'Quel est votre besoin en cybersécurité ?'
+    );
+
+    const choix = document.createElement('div');
+    choix.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;';
+
+    options.forEach(option => {
+        const bouton = document.createElement('button');
+        bouton.type = 'button';
+        bouton.textContent = option;
+        bouton.style.cssText =
+            'padding:9px 12px;border:1px solid #ddd;border-radius:12px;background:#f4efff;color:#502090;cursor:pointer;font-size:13px;';
+
+        bouton.onclick = function () {
+            afficher(option, true);
+            choix.remove();
+
+            if (service === 'Création graphique') {
+                afficher('Merci ! Quel style souhaitez-vous : moderne, minimaliste, professionnel ou personnalisé ? Vous pouvez nous transmettre vos idées pour obtenir un devis.');
+            } else {
+                afficher('Merci ! Pouvez-vous décrire votre problème ou votre besoin ? Nous pourrons ensuite vous orienter vers le service approprié.');
+            }
+        };
+
+        choix.appendChild(bouton);
+    });
+
+    messages.appendChild(choix);
+    messages.scrollTop = messages.scrollHeight;
+    return;
+}
   const reponses = {
     'Conseils en cybersécurité':
       '🛡️ Souhaitez-vous protéger votre ordinateur, supprimer un virus ou sécuriser votre entreprise ?',
