@@ -2558,7 +2558,7 @@ window.addEventListener('scroll', function() {
 <!-- Bouton chatbot HiTek -->
 <button id="hitek-chat-btn"
         type="button"
-        onclick="var chat=document.getElementById('hitek-chat-box'); if(chat){chat.style.display=window.getComputedStyle(chat).display==='none'?'flex':'none';}"
+        onclick="hitekToggleChat()"
         aria-label="Ouvrir HiTek Assistant">
   <img src="chatbot.svg" alt="">
 </button>
@@ -3012,6 +3012,11 @@ function hitekToggleChat() {
   const isOpen = window.getComputedStyle(box).display !== 'none';
 
   box.style.display = isOpen ? 'none' : 'flex';
+  const invite = document.getElementById('hitek-chat-invite');
+
+if (invite) {
+    invite.style.display = 'none';
+}
 }
 </script>
   <script>
