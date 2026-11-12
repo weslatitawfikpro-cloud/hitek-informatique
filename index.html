@@ -2067,10 +2067,15 @@ nav .lang-dropdown .lang-option:hover{
 
 </section>
 
-
 <footer>
-  © 2026 HiTek Informatique — Réparation informatique • Création graphique • Cybersécurité
+  <p>© 2026 HiTek Informatique – Réparation informatique • Création graphique • Cybersécurité</p>
+
+  <a href="confidentialite.html"
+     style="color:#c7a8ff; text-decoration:none; display:inline-block; margin-top:10px;">
+    Politique de confidentialité
+  </a>
 </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
@@ -2684,6 +2689,31 @@ window.addEventListener('scroll', function() {
     transform: none;
   }
 }
+  
+/* Lien de confidentialité dans le footer */
+.footer-privacy {
+  display: inline-block;
+  margin-top: 10px;
+  color: #c7a8ff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.25s ease;
+}
+
+/* Changement de couleur au survol */
+.footer-privacy:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+/* Accessibilité au clavier */
+.footer-privacy:focus-visible {
+  color: #ffffff;
+  outline: 2px solid #c7a8ff;
+  outline-offset: 4px;
+}
+
 </style>
   <!-- FENÊTRE HITEK ASSISTANT -->
 <div id="hitek-chat-box" role="dialog"
